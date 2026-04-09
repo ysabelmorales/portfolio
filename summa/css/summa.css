@@ -1,0 +1,57 @@
+
+.specs__section {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+    line-height: 1.35;
+    color: #000;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding-bottom: 100px;
+
+}
+
+.specs__section a {
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+    color: #000;
+    text-decoration: none;
+    color: #000;
+    line-height: 1.95;
+    background-color: rgba(139, 101, 68, 0.7);
+    padding: 7px 6px;
+    text-decoration: none;
+    color: black;
+}
+
+
+.project__description {
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.summa {
+    padding-top: 150px;
+}
+
+.spec-popup {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+}
+
+.spec-popup img {
+    display: block;
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+}
+
+.spec-popup.visible {
+    display: block;
+}

@@ -1,0 +1,60 @@
+/* ========= WORKS PAGE LAYOUT ========= */
+
+.works-main {
+    padding-top: 150px; /* clears the fixed header */
+}
+
+.tcb {
+    padding-top: 0px;
+}
+
+.summa {
+padding-top: 0px;
+}
+
+.filters {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 24px;
+}
+
+.filter-btn {
+    font-family: Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    background-color: rgba(139, 101, 68, 0);
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 7px 6px;
+    display: inline-block;
+    text-align: left;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    white-space: nowrap;
+}
+
+.filter-btn:hover {
+    opacity: 0.6;
+}
+
+.filter-btn.active {
+    background-color: rgba(116, 154, 187, 0.7);
+    color: white;
+    mix-blend-mode: normal;
+}
+
+/* ========= PROJECT VISIBILITY ========= */
+
+.project {
+    transition: opacity 0.3s ease;
+}
+
+.project.hidden {
+    display: none;
+}
