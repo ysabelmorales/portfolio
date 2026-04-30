@@ -154,7 +154,6 @@ body {
     letter-spacing: 0.04em;
     text-decoration: none;
     color: white;
-    padding-bottom: 0px;
     padding-top: 4px;
     text-align: right;
     font-size: calc(13px * var(--scroll-scale));
@@ -275,10 +274,6 @@ body {
 
 .carousel__arrow:hover { opacity: 0.5; }
 
-.tcb .carousel + .carousel {
-    margin-top: 0;
-    padding-top: 0;
-}
 
 .carousel .project__image {
     padding-top: 0 !important;
@@ -349,6 +344,7 @@ body {
     align-self: start;
 }
 
+
 .project__specs p {
     color: black;
     display: inline-block;
@@ -408,6 +404,12 @@ body {
     display: inline-block;
 }
 
+img,
+video {
+  width: 100%;
+  height: auto;
+}
+
 .project__link--arrow {
     padding: 5px 9px;
 }
@@ -416,8 +418,9 @@ body {
     padding-top: 150px;
 }
 
-.summa{
-    padding-top: 0px;
+
+.harmonic {
+    padding-top: 150px;
 }
 
 .summa .project__specs {
