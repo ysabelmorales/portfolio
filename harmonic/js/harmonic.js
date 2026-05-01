@@ -1,10 +1,7 @@
 const specImages = {
-    "Airbrush":          ["../images/Specs-05.webp"],
-    "Print":             ["../images/Specs-07.webp"],
-    "Visual Research":   ["../images/Specs-06.webp"],
-    "Laser Cut":         ["../images/Specs-03.webp"],
-    "Experimentation":   ["../images/Specs-05.webp"],
-    "Material Research": ["../images/Specs-01.webp"],
+    "Print":             ["../images/Specs-400w/Specs-400w-20.webp"],
+    "Research":          ["../images/Specs-400w/Specs-400w-21.webp"],
+    "Iterative Design":  ["../images/Specs-400w/Specs-400w-22.webp"],
   };
   
   const popup = document.getElementById('specPopup');
