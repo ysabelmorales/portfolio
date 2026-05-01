@@ -6,7 +6,7 @@ const specImages = {
   "Experimentation":   ["../images/Specs-400w/Specs-400w-07.webp"],
   "Material Research": ["../images/Specs-400w/Specs-400w-10.webp"],
 };
-
+  
 const popup = document.getElementById('specPopup');
 const popupImg = document.getElementById('specPopupImg');
 let activeLink = null;

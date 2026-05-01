@@ -5,7 +5,7 @@ const specImages = {
   "Prototyping":       ["../images/Specs-400w/Specs-400w-01.webp"],
   "Material Research": ["../images/Specs-400w/Specs-400w-06.webp"],
 };
-
+  
 const popup = document.getElementById('specPopup');
 const popupImg = document.getElementById('specPopupImg');
 let activeLink = null;
@@ -22,7 +22,7 @@ function showPopup(link, e) {
 
   const x = e.clientX;
   const y = e.clientY;
-  const pw = 270, ph = 330, offset = 30;
+  const pw = 180, ph = 220, offset = 30;
   const vw = window.innerWidth, vh = window.innerHeight;
 
   let left = x + offset;

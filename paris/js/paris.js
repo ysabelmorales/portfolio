@@ -5,7 +5,7 @@ const specImages = {
     "Material Research":   ["../images/Specs-400w/Specs-400w-17.webp"],
     "Print":               ["../images/Specs-400w/Specs-400w-15.webp"],
   };
-  
+   
   const popup = document.getElementById('specPopup');
 const popupImg = document.getElementById('specPopupImg');
 let activeLink = null;
