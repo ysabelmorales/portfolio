@@ -1,10 +1,10 @@
 const specImages = {
-  "Airbrush":          ["../images/Specs-05.webp"],
-  "Print":             ["../images/Specs-07.webp"],
-  "Visual Research":   ["../images/Specs-06.webp"],
-  "Laser Cut":         ["../images/Specs-03.webp"],
-  "Experimentation":   ["../images/Specs-05.webp"],
-  "Material Research": ["../images/Specs-01.webp"],
+  "Airbrush":          ["../images/Specs-400w/Specs-400w-09.webp"],
+  "Prototyping":       ["../images/Specs-400w/Specs-400w-08.webp"],
+  "Visual Research":   ["../images/Specs-400w/Specs-400w-11.webp"],
+  "Laser Cut":         ["../images/Specs-400w/Specs-400w-12.webp"],
+  "Experimentation":   ["../images/Specs-400w/Specs-400w-07.webp"],
+  "Material Research": ["../images/Specs-400w/Specs-400w-10.webp"],
 };
 
 const popup = document.getElementById('specPopup');

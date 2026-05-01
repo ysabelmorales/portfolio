@@ -1,9 +1,9 @@
 const specImages = {
-    "Sketching":           ["../images/OlympicsSpecs-01.webp"],
-    "Symbolism Research":  ["../images/OlympicsSpecs-06.webp"],
-    "Iterative Design":    ["../images/OlympicsSpecs-05.webp"],
-    "Material Research":   ["../images/OlympicsSpecs-03.webp"],
-    "Print":               ["../images/OlympicsSpecs-04.webp"],
+    "Sketching":           ["../images/Specs-400w/Specs-400w-16.webp"],
+    "Symbolism Research":  ["../images/Specs-400w/Specs-400w-13.webp"],
+    "Iterative Design":    ["../images/Specs-400w/Specs-400w-14.webp"],
+    "Material Research":   ["../images/Specs-400w/Specs-400w-17.webp"],
+    "Print":               ["../images/Specs-400w/Specs-400w-15.webp"],
   };
   
   const popup = document.getElementById('specPopup');

@@ -1,9 +1,9 @@
 const specImages = {
-  "Book Binding":      ["../images/Specs-12.webp"],
-  "Print":             ["../images/Specs-08.webp"],
-  "Screenprinting":    ["../images/Specs-11.webp"],
-  "Prototyping":       ["../images/Specs-10.webp"],
-  "Material Research": ["../images/Specs-09.webp"],
+  "Book Binding":      ["../images/Specs-400w/Specs-400w-05.webp"],
+  "Print":             ["../images/Specs-400w/Specs-400w-04.webp"],
+  "Screenprinting":    ["../images/Specs-400w/Specs-400w-03.webp"],
+  "Prototyping":       ["../images/Specs-400w/Specs-400w-01.webp"],
+  "Material Research": ["../images/Specs-400w/Specs-400w-06.webp"],
 };
 
 const popup = document.getElementById('specPopup');
@@ -22,7 +22,7 @@ function showPopup(link, e) {
 
   const x = e.clientX;
   const y = e.clientY;
-  const pw = 180, ph = 220, offset = 30;
+  const pw = 270, ph = 330, offset = 30;
   const vw = window.innerWidth, vh = window.innerHeight;
 
   let left = x + offset;
