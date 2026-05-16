@@ -190,7 +190,6 @@ body {
     opacity: 0.7;
 }
 
-/* ========== CAROUSEL STYLES ========== */
 .carousel {
     position: relative;
     grid-column: 1 / -1;
@@ -200,7 +199,6 @@ body {
     user-select: none;
 }
 
-/* Remove space between stacked carousels */
 .project .carousel {
     margin: 0;
     padding: 0;
@@ -236,7 +234,6 @@ body {
     align-items: stretch;
 }
 
-/* Fix for images - prevents white lines */
 .carousel__slide img {
     width: 100%;
     height: 100%;
@@ -244,7 +241,6 @@ body {
     display: block;
 }
 
-/* Fix for videos */
 .carousel__slide video {
     width: 100%;
     height: 100%;
@@ -252,7 +248,6 @@ body {
     display: block;
 }
 
-/* Fix for links around media */
 .carousel__slide a {
     width: 100%;
     height: 100%;
@@ -297,7 +292,34 @@ body {
     padding-top: 0 !important;
 }
 
-/* ========== PROJECT STYLES ========== */
+.project.summa .carousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.project.summa .carousel__slide a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+    font-size: 0;
+}
+
+.project.summa .carousel__track {
+    display: flex;
+    width: 100%;
+    gap: 0;
+}
+
+.project.summa .carousel__slide {
+    margin: 0;
+    padding: 0;
+}
+
 .project {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -432,7 +454,6 @@ video {
     padding: 5px 9px;
 }
 
-/* ========== PROJECT SPECIFIC PADDING ========== */
 .tcb {
     padding-top: 150px;
 }
@@ -466,7 +487,6 @@ video {
     padding-left: 15px;
 }
 
-/* ========== FOOTER ========== */
 .footer{
     position: fixed;
     bottom: 0;
@@ -564,7 +584,6 @@ video {
     transition: font-size 0.2s ease;
 }
 
-/* ========== MENU OVERLAY ========== */
 .menu-overlay {
     position: fixed;
     top: 0;
