@@ -49,6 +49,29 @@
     display: block;
 }
 
+.carousel .project__image {
+    padding-top: 0 !important;
+}
+
+.project.summa .carousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.project.summa .carousel__slide a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+    font-size: 0;
+}
+
+
+
 .spec-popup {
     position: fixed;
     pointer-events: none;
