@@ -1,1026 +1,1073 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ysabel Morales — Graphic Designer & Visual Artist</title>
-        <link rel="icon" href="../images/Favicon/Favicon_Final.webp" type="image/x-icon">
-        <meta name="description" content="Graphic designer and visual artist based in Los Angeles. BFA from Otis College of Art and Design. Work spans print, branding, bookbinding, and exhibition design.">
-        <meta property="og:title" content="Ysabel Morales — Graphic Designer">
-        <meta property="og:description" content="Portfolio of print, branding, and bookbinding work. BFA thesis on religious deconstruction held in Otis College Special Collections.">
-        <meta property="og:site_name" content="Ysabel Morales">
-        <link rel="canonical" href="https://ysabelmorales.com/">
-        
-        <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --scroll-scale: 1;
-        }
-        
-        html{
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            background: white;
-        }
-        
-        .header{ 
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: transparent;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            z-index: 100;
-            text-decoration: none;
-            background-color:transparent;
-            mix-blend-mode: difference;  
-            color: white;
-        }
-        
-        .header-column:first-child {
-            text-align: left;
-        }
-        
-        
-        
-        .sticky-badge {
-            position: fixed;
-            top: 65%;
-            right: auto;
-            background-color: rgb(116, 154, 187);
-            color: white;
-            padding: 5px 6px;
-            font-family: Helvetica, sans-serif;
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            z-index: 1000;
-            transform: rotate(180deg) translateX(0%);    
-            cursor: pointer;
-            display: inline-flexdisplay inline-flex; 
-            align-items: center;  
-            display: flex;
-            flex-direction: column-reverse; 
-            align-items: center;
-            padding: 15px 10px;
-            gap: 30px;
-            
-        }
-        
-        
-        .sticky-badge-logo {
-            width: 45px;
-            height: auto;
-            display: block;
-            transform: rotate(180deg);
-            margin-bottom: 8px;
-        }
-        
-        .sticky-badge-text {
-            writing-mode: vertical-rl; 
-            text-orientation: mixed;
-            transform: rotate(180deg); 
-        }
-        
-        
-        .logo{
-            font-family: Helvetica, sans-serif;
-            font-style:normal;
-            font-weight:400;
-            letter-spacing: -0.07em;
-            text-decoration: none;
-            color:white;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0;
-            font-size: calc(50px * var(--scroll-scale));
-            line-height: calc(47px * var(--scroll-scale));
-            transition: font-size 0.2s ease, line-height 0.2s ease;
-        }
-        
-        .logo-line {
-            background-color: rgba(116, 154, 187, 0.7);
-            display: inline-block;
-            margin-bottom: -5px;
-            padding: calc(5px * var(--scroll-scale)) calc(10px * var(--scroll-scale));
-            transition: padding 0.2s ease;
-        }
-        
-        .logo-line:last-child {
-            margin-bottom: 0;
-        }
-        
-        .navbar a{
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            font-size: 12px;
-            line-height: 20px;
-            letter-spacing: 0.02em;
-            text-decoration: none;
-            color:white
-        }
-        
-        .header-column{
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            font-size: 14px;
-            line-height: inherit;
-            letter-spacing: 0.02em;
-            text-decoration: none; 
-            color: white;   
-            flex: 1; 
-            text-align: right;
-        }
-        
-        .date {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            line-height: 12px;
-            letter-spacing: 0.04em;
-            color: white;
-            padding-top: 3px;
-            text-align: right;
-            font-size: calc(13px * var(--scroll-scale));
-            transition: font-size 0.2s ease;
-        }
-        
-        .la {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            line-height: 12px;
-            letter-spacing: 0.04em;
-            text-decoration: none;
-            color: white;
-            padding-top: 4px;
-            text-align: right;
-            font-size: calc(13px * var(--scroll-scale));
-            transition: font-size 0.2s ease;
-        }
-        
-        .time {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            font-size: 13px;
-            line-height: 12px;
-            letter-spacing: 0.04em;
-            color: white;
-            padding-top: 5px;
-            text-align: right;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 16px;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: 12px;
-            opacity: 70%;
-        }
-        
-        .social-icons a {
-            display: block;
-            line-height: 0;
-        }
-        
-        .social-icons img {
-            display: block;
-            transition: width 0.2s ease, height 0.2s ease;
-            width: calc(30px * var(--scroll-scale));
-            height: calc(30px * var(--scroll-scale));
-        }
-        
-        .social-icons img:hover {
-            opacity: 0.7;
-        }
-        
-        .carousel {
-            position: relative;
-            grid-column: 1 / -1;
-            width: 100%;
-            overflow: hidden;
-            cursor: grab;
-            user-select: none;
-        }
-        
-        .tcb .carousel {
-            grid-column: 1 / -1;
-            width: 100%;
-        }
-        
-        .carousel.is-dragging { cursor: grabbing; }
-        
-        .carousel__track {
-            display: flex;
-            width: 100%;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-        }
-        
-        
-        .carousel__slide {
-            min-width: 100%;
-            display: flex;
-            font-size: 0;
-            line-height: 0;
-            align-items: stretch;
-        }
-        
-        .carousel__slide video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        
-        .carousel__slide a {
-            width: 100%;
-            height: 100%;   /* ADD THIS */
-            display: block;
-            line-height: 0;
-        }
-        
-        .carousel__arrows {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            padding: 0 12px;
-            z-index: 10;
-            pointer-events: none;
-        }
-        
-        .carousel__arrow {
-            pointer-events: all;
-            background: none;
-            border: none;
-            font-family: Helvetica, sans-serif;
-            font-size: 18px;
-            font-weight: 300;
-            color: white;
-            cursor: pointer;
-            mix-blend-mode: difference;
-            padding: 8px;
-            line-height: 1;
-            transition: opacity 0.2s ease;
-        }
-        
-        .carousel__arrow:hover { opacity: 0.5; }
-        
-        
-        .carousel .project__image {
-            padding-top: 0 !important;
-        }
-        
-        .project {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: start; /* ADD THIS LINE */
-        }
-        
-        .project__image {
-            width: 100%;
-            height: auto;
-            display: block;
-            grid-column: span 3;
-        }
-        
-        .tcb-img {
-            display: block;
-            grid-column: span 3;
-        }
-        
-        .project__tags {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 12px;
-            line-height: 17px;
-            padding-left: 15px;
-            padding-top: 40px;
-            letter-spacing: -0.07em;
-            grid-column: span 1;
-            justify-content: right;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            align-items: flex-start;
-        }
-        
-        .project__tags a {
-            text-decoration: none;
-            color: black;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: -0.05em;
-            background-color: rgba(139, 101, 68, 0.7);
-            display: inline-block;
-            padding: 7px 6px;
-            line-height: 1;
-            align-self: start;
-        }
-        
-        .project__specs {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            text-decoration: none;
-            font-size: 14px;
-            line-height: 11px;
-            padding-top: 40px;
-            padding-left: 15px;
-            grid-column: span 1;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            justify-content: flex-start;
-            align-self: start;
-        }
-        
-        
-        .project__specs p {
-            color: black;
-            display: inline-block;
-            padding: 7px 6px;
-            height: auto;
-            transition: opacity 0.3s ease;
-        }
-        
-        .project_title {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 200;
-            font-size: 30px;
-            line-height: 30px;
-            letter-spacing: -0.07em;
-            text-decoration: none;
-        }
-        
-        .project__description {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            font-size: 16.75px;
-            line-height: 20px;
-            letter-spacing: 0.02em;
-            grid-column: 2 / span 2;
-            padding-right: 30px;
-            padding-left: 15px;
-            padding-top: 10px; /* ADD THIS LINE */
-            text-wrap: pretty;
-            padding-bottom: 75px;
-        }
-        
-        .paragraph__link {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 500;
-            letter-spacing: -0.05em;
-            padding: 2px 5px;
-            line-height: 1;
-            background-color: rgba(139, 101, 68, 0.7);
-            text-decoration: none;
-            color: black;
-        }
-        
-        .project__link {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 14px;
-            letter-spacing: -0.07em;
-            color: black;
-            background-color: rgba(139, 101, 68, 0.7);
-            padding: 5px 10px;
-            display: inline-block;
-        }
-        
-        img,
-        video {
-          width: 100%;
-          height: auto;
-        }
-        
-        .project__link--arrow {
-            padding: 5px 9px;
-        }
-        
-        .tcb {
-            padding-top: 150px;
-        }
-        
-        
-        .harmonichorizons {
-            padding-top: 40px;
-            padding-bottom: 150px;
-
-        }
-        
-        .summa .project__specs {
-            padding-left: 40px;
-        }
-        
-        .summa .project__tags {
-            padding-left: 15px;
-        }
-        
-        .summa .project__description {
-            padding-left: 45px;
-        }
-        
-        .tcb .project__description {
-            padding-left: 60px;
-        }
-        
-        .tcb .project__specs {
-            padding-left: 50px;
-        }
-        
-        .tcb .project__tags {
-            padding-left: 15px;
-        }
-        
-        .footer{
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 25px;
-            background-color: transparent;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            z-index: 100;
-            mix-blend-mode:difference;
-            color:white;
-        }
-        
-        .footer-column{
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            font-size: 25px;
-            line-height: 20px;
-            letter-spacing: 0.02em;
-            color:white;
-            flex: 1;
-        }
-        
-        .footer-logo{
-            width: 160px;
-            display: block;
-            filter: invert(1) brightness(2);
-        }
-        
-        .footer-nav{
-            display: flex;
-            flex-direction: column;
-            gap: 0px;
-            color:white;
-        }
-        
-        .footer-nav a{
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 16px;
-            display:block;
-            letter-spacing: 0.02em;
-            text-decoration: none;
-            color: white;
-            padding-left: 0px;
-            text-align: inherit;
-        }
-        
-        .footer-nav a:hover{
-            text-decoration: none;
-        }
-        
-        .footer-socials{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 0px;
-            color:white;
-        }
-        
-        .footer-socials a{
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            letter-spacing: -0.07em;
-            text-decoration: none;
-            color:white;
-            background-color: rgba(116, 154, 187, 0.7);
-            display: inline-block;
-            margin-bottom: 12px;
-            font-size: calc(40px * var(--scroll-scale));
-            line-height: calc(47px * var(--scroll-scale));
-            padding: calc(5px * var(--scroll-scale)) calc(15px * var(--scroll-scale));
-            transition: font-size 0.2s ease, line-height 0.2s ease, padding 0.2s ease;
-        }
-        
-        .footer-socials a:last-child {
-            margin-bottom: 0;
-        }
-        
-        .footer-copyright {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            line-height: 12px;
-            text-align: left;
-            margin-top: 0;
-            color:white;
-            font-size: calc(12px * var(--scroll-scale));
-            transition: font-size 0.2s ease;
-        }
-        
-        /* Menu Overlay */
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(139, 101, 68, .90);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .menu-overlay-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            text-align: center;
-        }
-        
-        .menu-overlay-link {
-            font-family: Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 50px;
-            line-height: 1;
-            letter-spacing: -0.07em;
-            text-decoration: none;
-            color:black;
-            transition: opacity 0.3s ease;
-        }
-        
-        .menu-overlay-link:hover {
-            opacity: 0.6;
-        }
-        
-        .menu-overlay-link.active {
-            text-decoration: none;
-        }
-        </style>
-    </head>
-    
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ysabel Morales — Graphic Designer & Visual Artist</title>
+    <link rel="icon" href="../images/Favicon/Favicon_Final.webp" type="image/x-icon">
+    <meta name="description" content="Graphic designer and visual artist based in Los Angeles. BFA from Otis College of Art and Design. Work spans print, branding, bookbinding, and exhibition design.">
+    <meta property="og:title" content="Ysabel Morales — Graphic Designer">
+    <meta property="og:description" content="Portfolio of print, branding, and bookbinding work. BFA thesis on religious deconstruction held in Otis College Special Collections.">
+    <meta property="og:site_name" content="Ysabel Morales">
+    <link rel="canonical" href="https://ysabelmorales.com/">
     <meta name="author" content="Ysabel Morales">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ysabelmorales.com">
     <meta name="twitter:card" content="summary">
+    
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    :root {
+        --scroll-scale: 1;
+    }
+    
+    html{
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .header{ 
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        background: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        z-index: 100;
+        text-decoration: none;
+        background-color:transparent;
+        mix-blend-mode: difference;  
+        color: white;
+    }
+    
+    .header-column:first-child {
+        text-align: left;
+    }
+    
+    .sticky-badge {
+        position: fixed;
+        top: 65%;
+        right: auto;
+        background-color: rgb(116, 154, 187);
+        color: white;
+        padding: 5px 6px;
+        font-family: Helvetica, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        z-index: 1000;
+        transform: rotate(180deg) translateX(0%);    
+        cursor: pointer;
+        display: flex;
+        flex-direction: column-reverse; 
+        align-items: center;
+        padding: 15px 10px;
+        gap: 30px;
+    }
+    
+    .sticky-badge-logo {
+        width: 45px;
+        height: auto;
+        display: block;
+        transform: rotate(180deg);
+        margin-bottom: 8px;
+    }
+    
+    .sticky-badge-text {
+        writing-mode: vertical-rl; 
+        text-orientation: mixed;
+        transform: rotate(180deg); 
+    }
+    
+    .logo{
+        font-family: Helvetica, sans-serif;
+        font-style:normal;
+        font-weight:400;
+        letter-spacing: -0.07em;
+        text-decoration: none;
+        color:white;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        font-size: calc(50px * var(--scroll-scale));
+        line-height: calc(47px * var(--scroll-scale));
+        transition: font-size 0.2s ease, line-height 0.2s ease;
+    }
+    
+    .logo-line {
+        background-color: rgba(116, 154, 187, 0.7);
+        display: inline-block;
+        margin-bottom: -5px;
+        padding: calc(5px * var(--scroll-scale)) calc(10px * var(--scroll-scale));
+        transition: padding 0.2s ease;
+    }
+    
+    .logo-line:last-child {
+        margin-bottom: 0;
+    }
+    
+    .navbar a{
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        color:white
+    }
+    
+    .header-column{
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 14px;
+        line-height: inherit;
+        letter-spacing: 0.02em;
+        text-decoration: none; 
+        color: white;   
+        flex: 1; 
+        text-align: right;
+    }
+    
+    .date {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 12px;
+        letter-spacing: 0.04em;
+        color: white;
+        padding-top: 3px;
+        text-align: right;
+        font-size: calc(13px * var(--scroll-scale));
+        transition: font-size 0.2s ease;
+    }
+    
+    .la {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 12px;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        color: white;
+        padding-top: 4px;
+        text-align: right;
+        font-size: calc(13px * var(--scroll-scale));
+        transition: font-size 0.2s ease;
+    }
+    
+    .time {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 13px;
+        line-height: 12px;
+        letter-spacing: 0.04em;
+        color: white;
+        padding-top: 5px;
+        text-align: right;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 16px;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 12px;
+        opacity: 70%;
+    }
+    
+    .social-icons a {
+        display: block;
+        line-height: 0;
+    }
+    
+    .social-icons img {
+        display: block;
+        transition: width 0.2s ease, height 0.2s ease;
+        width: calc(30px * var(--scroll-scale));
+        height: calc(30px * var(--scroll-scale));
+    }
+    
+    .social-icons img:hover {
+        opacity: 0.7;
+    }
+    
+    /* ========== CAROUSEL STYLES ========== */
+    .carousel {
+        position: relative;
+        grid-column: 1 / -1;
+        width: 100%;
+        overflow: hidden;
+        cursor: grab;
+        user-select: none;
+    }
+    
+    /* Remove space between stacked carousels */
+    .project .carousel {
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    
+    .project .carousel + .carousel {
+        margin-top: 0;
+    }
+    
+    .tcb .carousel {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+    
+    .carousel.is-dragging { 
+        cursor: grabbing; 
+    }
+    
+    .carousel__track {
+        display: flex;
+        width: 100%;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+        gap: 0;
+    }
+    
+    .carousel__slide {
+        min-width: 100%;
+        display: flex;
+        font-size: 0;
+        line-height: 0;
+        align-items: stretch;
+    }
+    
+    /* Fix for images - prevents white lines */
+    .carousel__slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    
+    /* Fix for videos */
+    .carousel__slide video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    
+    /* Fix for links around media */
+    .carousel__slide a {
+        width: 100%;
+        height: 100%;
+        display: block;
+        line-height: 0;
+        text-decoration: none;
+    }
+    
+    .carousel__arrows {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        z-index: 10;
+        pointer-events: none;
+    }
+    
+    .carousel__arrow {
+        pointer-events: all;
+        background: none;
+        border: none;
+        font-family: Helvetica, sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        color: white;
+        cursor: pointer;
+        mix-blend-mode: difference;
+        padding: 8px;
+        line-height: 1;
+        transition: opacity 0.2s ease;
+    }
+    
+    .carousel__arrow:hover { 
+        opacity: 0.5; 
+    }
+    
+    .carousel .project__image {
+        padding-top: 0 !important;
+    }
+    
+    /* ========== PROJECT STYLES ========== */
+    .project {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: start;
+    }
+    
+    .project__image {
+        width: 100%;
+        height: auto;
+        display: block;
+        grid-column: span 3;
+    }
+    
+    .tcb-img {
+        display: block;
+        grid-column: span 3;
+    }
+    
+    .project__tags {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 17px;
+        padding-left: 15px;
+        padding-top: 40px;
+        letter-spacing: -0.07em;
+        grid-column: span 1;
+        justify-content: right;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    
+    .project__tags a {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: -0.05em;
+        background-color: rgba(139, 101, 68, 0.7);
+        display: inline-block;
+        padding: 7px 6px;
+        line-height: 1;
+        align-self: start;
+    }
+    
+    .project__specs {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 11px;
+        padding-top: 40px;
+        padding-left: 15px;
+        grid-column: span 1;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        align-self: start;
+    }
+    
+    .project__specs p {
+        color: black;
+        display: inline-block;
+        padding: 7px 6px;
+        height: auto;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project_title {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 30px;
+        line-height: 30px;
+        letter-spacing: -0.07em;
+        text-decoration: none;
+    }
+    
+    .project__description {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 16.75px;
+        line-height: 20px;
+        letter-spacing: 0.02em;
+        grid-column: 2 / span 2;
+        padding-right: 30px;
+        padding-left: 15px;
+        padding-top: 10px;
+        text-wrap: pretty;
+        padding-bottom: 75px;
+    }
+    
+    .paragraph__link {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        letter-spacing: -0.05em;
+        padding: 2px 5px;
+        line-height: 1;
+        background-color: rgba(139, 101, 68, 0.7);
+        text-decoration: none;
+        color: black;
+    }
+    
+    .project__link {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        letter-spacing: -0.07em;
+        color: black;
+        background-color: rgba(139, 101, 68, 0.7);
+        padding: 5px 10px;
+        display: inline-block;
+    }
+    
+    img,
+    video {
+        width: 100%;
+        height: auto;
+    }
+    
+    .project__link--arrow {
+        padding: 5px 9px;
+    }
+    
+    /* ========== PROJECT SPECIFIC PADDING ========== */
+    .tcb {
+        padding-top: 150px;
+    }
+    
+    .harmonichorizons {
+        padding-top: 40px;
+        padding-bottom: 150px;
+    }
+    
+    .summa .project__specs {
+        padding-left: 40px;
+    }
+    
+    .summa .project__tags {
+        padding-left: 15px;
+    }
+    
+    .summa .project__description {
+        padding-left: 45px;
+    }
+    
+    .tcb .project__description {
+        padding-left: 60px;
+    }
+    
+    .tcb .project__specs {
+        padding-left: 50px;
+    }
+    
+    .tcb .project__tags {
+        padding-left: 15px;
+    }
+    
+    /* ========== FOOTER ========== */
+    .footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        background-color: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        z-index: 100;
+        mix-blend-mode: difference;
+        color: white;
+    }
+    
+    .footer-column{
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 25px;
+        line-height: 20px;
+        letter-spacing: 0.02em;
+        color: white;
+        flex: 1;
+    }
+    
+    .footer-logo{
+        width: 160px;
+        display: block;
+        filter: invert(1) brightness(2);
+    }
+    
+    .footer-nav{
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        color: white;
+    }
+    
+    .footer-nav a{
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 16px;
+        display: block;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        color: white;
+        padding-left: 0px;
+        text-align: inherit;
+    }
+    
+    .footer-nav a:hover{
+        text-decoration: none;
+    }
+    
+    .footer-socials{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0px;
+        color: white;
+    }
+    
+    .footer-socials a{
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        text-decoration: none;
+        color: white;
+        background-color: rgba(116, 154, 187, 0.7);
+        display: inline-block;
+        margin-bottom: 12px;
+        font-size: calc(40px * var(--scroll-scale));
+        line-height: calc(47px * var(--scroll-scale));
+        padding: calc(5px * var(--scroll-scale)) calc(15px * var(--scroll-scale));
+        transition: font-size 0.2s ease, line-height 0.2s ease, padding 0.2s ease;
+    }
+    
+    .footer-socials a:last-child {
+        margin-bottom: 0;
+    }
+    
+    .footer-copyright {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 12px;
+        text-align: left;
+        margin-top: 0;
+        color: white;
+        font-size: calc(12px * var(--scroll-scale));
+        transition: font-size 0.2s ease;
+    }
+    
+    /* ========== MENU OVERLAY ========== */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(139, 101, 68, .90);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .menu-overlay-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .menu-overlay-link {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 1;
+        letter-spacing: -0.07em;
+        text-decoration: none;
+        color: black;
+        transition: opacity 0.3s ease;
+    }
+    
+    .menu-overlay-link:hover {
+        opacity: 0.6;
+    }
+    
+    .menu-overlay-link.active {
+        text-decoration: none;
+    }
+    </style>
+</head>
 
-    <body> 
-        <!--========= HEADER ========-->
-        <header class="header"> 
-            <div class="header-column">
-                <a href="home.html" class="logo">
-                    <span class="logo-line">Ysabel</span>
-                    <span class="logo-line">Morales</span>
+<body> 
+    <!--========= HEADER ========-->
+    <header class="header"> 
+        <div class="header-column">
+            <a href="home.html" class="logo">
+                <span class="logo-line">Ysabel</span>
+                <span class="logo-line">Morales</span>
+            </a>
+        </div>
+        <div class="header-column">
+            <div>
+                <p class="date" id="livedate"></p>
+            </div>
+            <nav class="navbar"></nav>
+            <div>
+                <p class="la">Los Angeles, CA</p> 
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ysabelmorales" target="_blank">
+                    <img src="images/Icons/ICONS-04.webp" alt="LinkedIn" width="32" height="32">
+                </a>
+                <a href="https://www.instagram.com/ysabelrmorales" target="_blank">
+                    <img src="images/Icons/ICONS-03.webp" alt="Instagram" width="32" height="32">
                 </a>
             </div>
-            <div class="header-column">
-                <div>
-                    <p class="date" id="livedate"></p>
+        </div>
+    </header>
+
+    <!--========= BADGE ========-->
+    <a href="paris/parisolympics.html" class="sticky-badge" target="_blank">
+        <span class="sticky-badge-text">Winner.</span>
+        <img src="images/Stickybadge/ParisLogo.webp" alt="Paris 2024" class="sticky-badge-logo" width="48" height="64">
+    </a>
+
+    <!--========= MAIN CONTENT ========-->
+    <main> 
+        <!-- Project 1: The Companion Bible -->
+        <section class="project tcb">
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <video class="project__image" width="1400" height="800" autoplay loop muted playsinline preload="metadata" fetchpriority="high">
+                            <source src="images/mp4-1400w/TCB22.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="carousel__slide">
+                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-12.webp"
+                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-12.webp 800w,
+                                    images/DeskCarousel-1400w/DeskCarousel-1400w-12.webp 1400w"
+                            sizes="(max-width: 768px) 800px, 1400px"
+                            class="project__image" alt="The Companion Bible Screenprinted Shirt" width="1400" height="800"
+                            fetchpriority="high">
+                    </div>
+                    <div class="carousel__slide">
+                        <video width="1400" height="800" autoplay loop muted playsinline preload="metadata">
+                            <source src="images/mp4-1400w/ThesisBook2.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
-                <nav class="navbar"></nav>
-                <div>
-                    <p class="la">Los Angeles, CA</p> 
-                </div>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/ysabelmorales" target="_blank">
-                        <img src="images/Icons/ICONS-04.webp" alt="LinkedIn" width="32" height="32">
-                    </a>
-                    <a href="https://www.instagram.com/ysabelrmorales" target="_blank">
-                        <img src="images/Icons/ICONS-03.webp" alt="Instagram" width="32" height="32">
-                    </a>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
                 </div>
             </div>
-        </header>
-
-        <!--========= BADGE ========-->
-        <a href="paris/parisolympics.html" class="sticky-badge" target="_blank">
-            <span class="sticky-badge-text">   Winner.</span>
-            <img src="images/Stickybadge/ParisLogo.webp" alt="Paris 2024" class="sticky-badge-logo" width="48" height="64">
-        </a>
-
-        <!--========= MAIN CONTENT ========-->
-        <main> 
-
-            <!-- Project 1: The Companion Bible -->
-            <section class="project tcb">
-                <div class="carousel">
-                    <div class="carousel__track">
-                        <div class="carousel__slide">
-                            <video class="project__image" width="1400" height="800" autoplay loop muted playsinline>
-                                <source src="images/mp4-1400w/TCB22.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="carousel__slide">
-                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-12.webp"
-                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-12.webp 800w,
-                                        images/DeskCarousel-1400w/DeskCarousel-1400w-12.webp 1400w"
-                                sizes="(max-width: 768px) 800px, 1400px"
-                                class="project__image" alt="The Companion Bible Screenprinted Shirt" width="1400" height="800">
-                        </div>
-                        <div class="carousel__slide">
-                            <video width="1400" height="800" autoplay loop muted playsinline>
-                                <source src="images/mp4-1400w/ThesisBook2.mp4" type="video/mp4">
-                            </video>
-                        </div>
+        
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <video class="project__image" width="1400" height="800" autoplay loop muted playsinline preload="metadata">
+                            <source src="images/mp4-1400w/TCB2.mp4" type="video/mp4">
+                        </video>
                     </div>
-                    <div class="carousel__arrows">
-                        <button class="carousel__arrow prev">&#60;</button>
-                        <button class="carousel__arrow next">&#62;</button>
-                    </div>
-                </div>
-            
-                <div class="carousel">
-                    <div class="carousel__track">
-                        <div class="carousel__slide">
-                            <video class="project__image" width="1400" height="800" autoplay loop muted playsinline>
-                                <source src="images/mp4-1400w/TCB2.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="carousel__slide">
-                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-15.webp"
-                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-15.webp 800w,
-                                        images/DeskCarousel-1400w/DeskCarousel-1400w-15.webp 1400w"
-                                sizes="(max-width: 768px) 800px, 1400px"
-                                class="project__image" alt="The Companion Bible" width="1400" height="800">
-                        </div>
-                        <div class="carousel__slide">
-                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-13.webp"
-                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-13.webp 800w,
-                                        images/DeskCarousel-1400w/DeskCarousel-1400w-13.webp 1400w"
-                                sizes="(max-width: 768px) 800px, 1400px"
-                                class="project__image" alt="The Companion Bible" width="1400" height="800">
-                        </div>
-                    </div>
-                    <div class="carousel__arrows">
-                        <button class="carousel__arrow prev">&#60;</button>
-                        <button class="carousel__arrow next">&#62;</button>
-                    </div>
-                </div>
-                <div class="project__tags">
-                    <a href="works/works.html?filter=Branding">Branding</a>
-                    <a href="works/works.html?filter=Editorial">Editorial</a>
-                    <a href="works/works.html?filter=Exhibition">Exhibition</a>
-                </div>
-                <div class="project__specs">
-                    <p>Inkjet</p>
-                    <p>Screenprint</p>
-                    <p>Bookbinding</p>
-                </div>
-                <div class="project__description">
-                    <p class="project_title">The Companion Bible</p>
-                    <br>
-                    <p>Limited print Edition 1 of 3 held in the Otis College's library's <a href="https://otis.libguides.com/special_collections" class="paragraph__link">Special Collections.</a> A BFA thesis exploring my own religious deconstruction through print. Six handbound works created using coptic stitching, screenprinting and ASCII art overlays to examine our inherited faith and lived experiences. Each work takes inspiration from different formats: devotional book, voter pamphlet, recipe card etc... 
-                    </p>
-                    <br>
-                    <br>
-                    <a href="tcb/tcb.html" class="project__link">See more</a>
-                    <a href="tcb/tcb.html" class="project__link project__link--arrow">></a>
-                </div>
-            </section>
-
-            <!-- Project 2: Summaeverythang -->
-            <section class="project summa">
-                <div class="carousel">
-                    <div class="carousel__track">
-                        <div class="carousel__slide">
-                            <a href="summa/summa.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-03.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-03.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-03.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Summaeverythang" width="1400" height="800">
-                            </a>
-                        </div>
-                        <div class="carousel__slide">
-                            <a href="summa/summa.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-02.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-02.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-02.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Summaeverythang 2" width="1400" height="800">
-                            </a>
-                        </div>
-                        <div class="carousel__slide">
-                            <a href="summa/summa.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-05.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-05.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-05.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Summaeverythang 2" width="1400" height="800">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="carousel__arrows">
-                        <button class="carousel__arrow prev">&#60;</button>
-                        <button class="carousel__arrow next">&#62;</button>
-                    </div>
-                </div>
-                <div class="carousel">
-                    <div class="carousel__track">
-                        <div class="carousel__slide">
-                            <a href="summa/summa.html">
-                                <video class="project__image" width="1400" height="800" autoplay loop muted playsinline>
-                                    <source src="images/mp4-1400w/SummaPreview2.mp4" type="video/mp4">
-                                </video>
-                            </a>
-                        </div>
-                        <div class="carousel__slide">
-                            <a href="summa/summa.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-01.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-01.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-01.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Summaeverythang 2" width="1400" height="800">
-                            </a>
-                        </div>
-                        <div class="carousel__slide">
-                            <a href="summa/summa.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-06.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-06.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-06.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Summaeverythang 2" width="1400" height="800">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="carousel__arrows">
-                        <button class="carousel__arrow prev">&#60;</button>
-                        <button class="carousel__arrow next">&#62;</button>
-                    </div>
-                </div>
-                <div class="project__tags">
-                    <a href="works/works.html?filter=Branding">Branding</a>
-                    <a href="works/works.html?filter=Print">Print</a>
-                    <a href="works/works.html?filter=Packaging">Packaging</a>
-                </div>
-                <div class="project__specs">
-                    <p>Print</p>
-                    <p>Website</p>
-                    <p>Socials</p>
-                </div>
-                <div class="project__description">
-                    <p class="project_title">Summaeverythang</p>
-                    <br>
-                    <p>A rebrand for an organization providing mutual aid to South Central LA and Watts. I moved the identity away from polished sterile aesthetics toward the visual language already alive in the community: stickers, crates, spray paint, cardboard. The system uses the food supply chain as inspiration, layered textures, and the banana as a symbol of nourishment to create a flexible identity that grows with the organization and helps its community to grow.
-                    </p>
-                    <br>
-                    <a href="summa/summa.html" class="project__link">See more</a>
-                    <a href="summa/summa.html" class="project__link project__link--arrow">></a>
-                </div>
-            </section>
-
-            <!-- Project 3: Cultural Olympiad -->
-            <section class="project culturalolympiad">
-                <div class="carousel">
-                    <div class="carousel__track">
-                        <div class="carousel__slide">
-                            <a href="paris/parisolympics.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-07.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-07.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-07.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Cultural Olympiad" width="1400" height="800">
-                            </a>
-                        </div>
-                        <div class="carousel__slide">
-                            <a href="paris/parisolympics.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-08.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-08.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-08.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Cultural Olympiad 2" width="1400" height="800">
-                            </a>
-                        </div>
-                        <div class="carousel__slide">
-                            <a href="paris/parisolympics.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-09.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-09.webp 800w,images/DeskCarousel-1400w/DeskCarousel-1400w-09.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Cultural Olympiad 2" width="1400" height="800">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="carousel__arrows">
-                        <button class="carousel__arrow prev">&#60;</button>
-                        <button class="carousel__arrow next">&#62;</button>
-                    </div>
-                </div>
-                <div class="carousel">
-                    <div class="carousel__track">
-                        <div class="carousel__slide">
-                            <a href="paris/parisolympics.html">
-                                <video class="project__image" width="1400" height="800" autoplay loop muted playsinline>
-                                    <source src="images/mp4-1400w/ParisPreview2.mp4" type="video/mp4">
-                                </video>
-                            </a>
-                        </div>
-                        <div class="carousel__slide">
-                            <a href="paris/parisolympics.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-10.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-10.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-10.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Cultural Olympiad 2" width="1400" height="800">
-                            </a>
-                        </div>
-                        <div class="carousel__slide">
-                            <a href="paris/parisolympics.html">
-                                <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-11.webp"
-                                    srcset="images/MobileCarousel-800w/MobileCarousel-800w-11.webp 800w,
-                                            images/DeskCarousel-1400w/DeskCarousel-1400w-11.webp 1400w"
-                                    sizes="(max-width: 768px) 800px, 1400px"
-                                    class="project__image" alt="Cultural Olympiad 2" width="1400" height="800">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="carousel__arrows">
-                        <button class="carousel__arrow prev">&#60;</button>
-                        <button class="carousel__arrow next">&#62;</button>
-                    </div>
-                </div>
-                <div class="project__tags">
-                    <a href="works/works.html?filter=Print">Print</a>
-                    <a href="works/works.html?filter=Civic Design">Civic Design</a>
-                    <a href="works/works.html?filter=Exhibition">Exhibition</a>
-                </div>
-                <div class="project__specs">
-                    <p>Print</p>
-                    <p>Motion</p>
-                    <p>Digital</p>
-                </div>
-                <div class="project__description">
-                    <p class="project_title">Cultural Olympiad <br> Poster Competition</p>
-                    <br>
-                    <p>One of four posters selected from Otis College for an official Olympics poster competition, celebrating the cultural bond between Los Angeles and Paris ahead of the 2028 Olympics. The design itself connects both cities through iconic landmarks and imagery and also serves as a reference to Flash Invader's street art mosaics. Currently exhibited in both Paris and LA.</p>
-                    <br>
-                    <br>
-                    <a href="paris/parisolympics.html" class="project__link">See more</a>
-                    <a href="paris/parisolympics.html" class="project__link project__link--arrow">></a>
-                </div>
-            </section>
-
-            <!-- Project 4: Harmonic Horizons -->
-            <section class="project harmonichorizons">
-                <div class="carousel">
-                    <div class="carousel__track">
-                        <div class="carousel__slide">
-                            <img src="images/DeskOutcome-1400w/DeskOutcome-1400w-33.webp" 
-                            srcset="images/MobileOutcome-800w/MobileOutcome-800w-33.webp 800w,
-                                    images/DeskOutcome-1400w/DeskOutcome-1400w-33.webp 1400w"
+                    <div class="carousel__slide">
+                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-15.webp"
+                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-15.webp 800w,
+                                    images/DeskCarousel-1400w/DeskCarousel-1400w-15.webp 1400w"
                             sizes="(max-width: 768px) 800px, 1400px"
-                            class="project__image" alt="Harmonic Horizons 2" width="1400" height="800">
-                        </div>
-                        <div class="carousel__slide">
+                            class="project__image" alt="The Companion Bible" width="1400" height="800"
+                            loading="lazy">
+                    </div>
+                    <div class="carousel__slide">
+                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-13.webp"
+                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-13.webp 800w,
+                                    images/DeskCarousel-1400w/DeskCarousel-1400w-13.webp 1400w"
+                            sizes="(max-width: 768px) 800px, 1400px"
+                            class="project__image" alt="The Companion Bible" width="1400" height="800"
+                            loading="lazy">
+                    </div>
+                </div>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
+                </div>
+            </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Branding">Branding</a>
+                <a href="works/works.html?filter=Editorial">Editorial</a>
+                <a href="works/works.html?filter=Exhibition">Exhibition</a>
+            </div>
+            <div class="project__specs">
+                <p>Inkjet</p>
+                <p>Screenprint</p>
+                <p>Bookbinding</p>
+            </div>
+            <div class="project__description">
+                <p class="project_title">The Companion Bible</p>
+                <br>
+                <p>Limited print Edition 1 of 3 held in the Otis College's library's <a href="https://otis.libguides.com/special_collections" class="paragraph__link">Special Collections.</a> A BFA thesis exploring my own religious deconstruction through print. Six handbound works created using coptic stitching, screenprinting and ASCII art overlays to examine our inherited faith and lived experiences. Each work takes inspiration from different formats: devotional book, voter pamphlet, recipe card etc... 
+                </p>
+                <br>
+                <br>
+                <a href="tcb/tcb.html" class="project__link">See more</a>
+                <a href="tcb/tcb.html" class="project__link project__link--arrow">></a>
+            </div>
+        </section>
+
+        <!-- Project 2: Summaeverythang -->
+        <section class="project summa">
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <a href="summa/summa.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-03.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-03.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-03.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Summaeverythang" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="summa/summa.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-02.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-02.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-02.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Summaeverythang 2" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="summa/summa.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-05.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-05.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-05.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Summaeverythang 2" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
+                </div>
+            </div>
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <a href="summa/summa.html">
+                            <video class="project__image" width="1400" height="800" autoplay loop muted playsinline preload="metadata">
+                                <source src="images/mp4-1400w/SummaPreview2.mp4" type="video/mp4">
+                            </video>
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="summa/summa.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-01.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-01.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-01.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Summaeverythang 2" width="1400" height="800"
+                                loading="lazy">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="summa/summa.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-06.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-06.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-06.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Summaeverythang 2" width="1400" height="800"
+                                loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
+                </div>
+            </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Branding">Branding</a>
+                <a href="works/works.html?filter=Print">Print</a>
+                <a href="works/works.html?filter=Packaging">Packaging</a>
+            </div>
+            <div class="project__specs">
+                <p>Print</p>
+                <p>Website</p>
+                <p>Socials</p>
+            </div>
+            <div class="project__description">
+                <p class="project_title">Summaeverythang</p>
+                <br>
+                <p>A rebrand for an organization providing mutual aid to South Central LA and Watts. I moved the identity away from polished sterile aesthetics toward the visual language already alive in the community: stickers, crates, spray paint, cardboard. The system uses the food supply chain as inspiration, layered textures, and the banana as a symbol of nourishment to create a flexible identity that grows with the organization and helps its community to grow.
+                </p>
+                <br>
+                <a href="summa/summa.html" class="project__link">See more</a>
+                <a href="summa/summa.html" class="project__link project__link--arrow">></a>
+            </div>
+        </section>
+
+        <!-- Project 3: Cultural Olympiad -->
+        <section class="project culturalolympiad">
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <a href="paris/parisolympics.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-07.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-07.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-07.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Cultural Olympiad" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="paris/parisolympics.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-08.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-08.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-08.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Cultural Olympiad 2" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="paris/parisolympics.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-09.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-09.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-09.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Cultural Olympiad 2" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
+                </div>
+            </div>
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <a href="paris/parisolympics.html">
+                            <video class="project__image" width="1400" height="800" autoplay loop muted playsinline preload="metadata">
+                                <source src="images/mp4-1400w/ParisPreview2.mp4" type="video/mp4">
+                            </video>
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="paris/parisolympics.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-10.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-10.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-10.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Cultural Olympiad 2" width="1400" height="800"
+                                loading="lazy">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="paris/parisolympics.html">
+                            <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-11.webp"
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-11.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-11.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Cultural Olympiad 2" width="1400" height="800"
+                                loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
+                </div>
+            </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Print">Print</a>
+                <a href="works/works.html?filter=Civic Design">Civic Design</a>
+                <a href="works/works.html?filter=Exhibition">Exhibition</a>
+            </div>
+            <div class="project__specs">
+                <p>Print</p>
+                <p>Motion</p>
+                <p>Digital</p>
+            </div>
+            <div class="project__description">
+                <p class="project_title">Cultural Olympiad <br> Poster Competition</p>
+                <br>
+                <p>One of four posters selected from Otis College for an official Olympics poster competition, celebrating the cultural bond between Los Angeles and Paris ahead of the 2028 Olympics. The design itself connects both cities through iconic landmarks and imagery and also serves as a reference to Flash Invader's street art mosaics. Currently exhibited in both Paris and LA.</p>
+                <br>
+                <br>
+                <a href="paris/parisolympics.html" class="project__link">See more</a>
+                <a href="paris/parisolympics.html" class="project__link project__link--arrow">></a>
+            </div>
+        </section>
+
+        <!-- Project 4: Harmonic Horizons -->
+        <section class="project harmonichorizons">
+            <!-- CAROUSEL 1 -->
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <a href="harmonic/harmonich.html">
+                            <img src="images/DeskOutcome-1400w/DeskOutcome-1400w-33.webp" 
+                                srcset="images/MobileOutcome-800w/MobileOutcome-800w-33.webp 800w,
+                                        images/DeskOutcome-1400w/DeskOutcome-1400w-33.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Harmonic Horizons 2" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="harmonic/harmonich.html">
                             <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-22.webp" 
                                 srcset="images/MobileCarousel-800w/MobileCarousel-800w-22.webp 800w,
                                         images/DeskCarousel-1400w/DeskCarousel-1400w-22.webp 1400w"
                                 sizes="(max-width: 768px) 800px, 1400px"
-                                class="project__image" alt="Harmonic Horizons 2" width="1400" height="800">
-                        </div>
-                        <div class="carousel__slide">
-                            <img src="images/DeskOutcome-1400w/DeskOutcome-1400w-28.webp" 
-                            srcset="images/MobileOutcome-800w/MobileOutcome-800w-28.webp 800w,
-                                    images/DeskOutcome-1400w/DeskOutcome-1400w-28.webp 1400w"
-                            sizes="(max-width: 768px) 800px, 1400px"
-                            class="project__image" alt="Harmonic Horizons 2" width="1400" height="800">
-                        </div>
+                                class="project__image" alt="Harmonic Horizons 2" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
                     </div>
-                    <div class="carousel__arrows">
-                        <button class="carousel__arrow prev">&#60;</button>
-                        <button class="carousel__arrow next">&#62;</button>
+                    <div class="carousel__slide">
+                        <a href="harmonic/harmonich.html">
+                            <img src="images/DeskOutcome-1400w/DeskOutcome-1400w-28.webp" 
+                                srcset="images/MobileOutcome-800w/MobileOutcome-800w-28.webp 800w,
+                                        images/DeskOutcome-1400w/DeskOutcome-1400w-28.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Harmonic Horizons 2" width="1400" height="800"
+                                fetchpriority="high">
+                        </a>
                     </div>
                 </div>
-                <div class="carousel">
-                    <div class="carousel__track">
-                        <div class="carousel__slide">
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
+                </div>
+            </div>
+            <!-- CAROUSEL 2 -->
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <a href="harmonic/harmonich.html">
                             <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-21.webp" 
-                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-21.webp 800w,
-                                    images/DeskCarousel-1400w/DeskCarousel-1400w-21.webp 1400w"
-                            sizes="(max-width: 768px) 800px, 1400px"
-                            class="project__image" alt="Harmonic Horizons" width="1400" height="800">
-                        </div>
-                        <div class="carousel__slide">
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-21.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-21.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Harmonic Horizons" width="1400" height="800"
+                                loading="lazy">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="harmonic/harmonich.html">
                             <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-20.webp" 
-                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-20.webp 800w,
-                                    images/DeskCarousel-1400w/DeskCarousel-1400w-20.webp 1400w"
-                            sizes="(max-width: 768px) 800px, 1400px"
-                            class="project__image" alt="Harmonic Horizons 2" width="1400" height="800">
-                        </div>
-                        <div class="carousel__slide">
+                                srcset="images/MobileCarousel-800w/MobileCarousel-800w-20.webp 800w,
+                                        images/DeskCarousel-1400w/DeskCarousel-1400w-20.webp 1400w"
+                                sizes="(max-width: 768px) 800px, 1400px"
+                                class="project__image" alt="Harmonic Horizons 2" width="1400" height="800"
+                                loading="lazy">
+                        </a>
+                    </div>
+                    <div class="carousel__slide">
+                        <a href="harmonic/harmonich.html">
                             <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-23.webp" 
                                 srcset="images/MobileCarousel-800w/MobileCarousel-800w-23.webp 800w,
                                         images/DeskCarousel-1400w/DeskCarousel-1400w-23.webp 1400w"
                                 sizes="(max-width: 768px) 800px, 1400px"
-                                class="project__image" alt="Harmonic Horizons 2" width="1400" height="800">
-                        </div>
-                    </div>
-                    <div class="carousel__arrows">
-                        <button class="carousel__arrow prev">&#60;</button>
-                        <button class="carousel__arrow next">&#62;</button>
+                                class="project__image" alt="Harmonic Horizons 2" width="1400" height="800"
+                                loading="lazy">
+                        </a>
                     </div>
                 </div>
-                <div class="project__tags">
-                  <a href="works/works.html?filter=Branding">Branding</a>
-                  <a href="works/works.html?filter=Experiential">Experiential</a>
-                  <a href="works/works.html?filter=Packaging">Packaging</a>
-                </div>
-                <div class="project__specs">
-                    <p>Motion</p>
-                    <p>Print</p>
-                    <p>Packaging</p>
-                </div>
-                <div class="project__description">
-                    <p class="project_title">Harmonic Horizons</p>
-                    <br>
-                    <p>A visual and tactile translation of electronic sound that celebrates our 3 main senses. While festival branding is traditionally auditory-led, this system centers the triad of sight, hearing, and touch. By mapping sonic frequencies to physical textures and inviting visuals, the identity creates a visually loud and tangible anchor for an otherwise immaterial experience.
-                    </p>
-                    <br>
-                    <br>
-                    <a href="harmonic/harmonich.html" class="project__link">See more</a>
-                    <a href="harmonic/harmonich.html" class="project__link project__link--arrow">></a>                
-                </div>
-            </section>
-
-        </main>
-
-        <!-- ========== FOOTER ========== -->
-        <footer class="footer">
-            <div class="footer-column">
-                <div>
-                    <p class="footer-copyright">&copy; 2026 Ysabel Morales</p>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
                 </div>
             </div>
-            <div class="footer-column">
-                <div class="footer-socials">
-                    <a href="#">^</a>
-                    <a href="#">Menu</a>
-                </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Branding">Branding</a>
+                <a href="works/works.html?filter=Experiential">Experiential</a>
+                <a href="works/works.html?filter=Packaging">Packaging</a>
             </div>
-        </footer> 
+            <div class="project__specs">
+                <p>Motion</p>
+                <p>Print</p>
+                <p>Packaging</p>
+            </div>
+            <div class="project__description">
+                <p class="project_title">Harmonic Horizons</p>
+                <br>
+                <p>A visual and tactile translation of electronic sound that celebrates our 3 main senses. While festival branding is traditionally auditory-led, this system centers the triad of sight, hearing, and touch. By mapping sonic frequencies to physical textures and inviting visuals, the identity creates a visually loud and tangible anchor for an otherwise immaterial experience.
+                </p>
+                <br>
+                <br>
+                <a href="harmonic/harmonich.html" class="project__link">See more</a>
+                <a href="harmonic/harmonich.html" class="project__link project__link--arrow">></a>                
+            </div>
+        </section>
+    </main>
 
-        <!-- Full Screen Menu Overlay -->
-        <div class="menu-overlay" id="menuOverlay">
-            <nav class="menu-overlay-nav">
-                <a href="works/works.html" class="menu-overlay-link active">Works</a>                
-                <a href="about/about.html" class="menu-overlay-link">?</a>
-                <a href="mailto:yrmorales11@gmail.com?subject=General Inquiry" class="menu-overlay-link">Contact</a>
-            </nav>
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-column">
+            <div>
+                <p class="footer-copyright">&copy; 2026 Ysabel Morales</p>
+            </div>
         </div>
+        <div class="footer-column">
+            <div class="footer-socials">
+                <a href="#">^</a>
+                <a href="#">Menu</a>
+            </div>
+        </div>
+    </footer> 
 
-        <script src="js/testing_2.js" defer></script>
-    </body>
+    <!-- Full Screen Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <nav class="menu-overlay-nav">
+            <a href="works/works.html" class="menu-overlay-link active">Works</a>                
+            <a href="about/about.html" class="menu-overlay-link">?</a>
+            <a href="mailto:yrmorales11@gmail.com?subject=General Inquiry" class="menu-overlay-link">Contact</a>
+        </nav>
+    </div>
+
+    <script src="js/testing_2.js" defer></script>
+</body>
 </html>

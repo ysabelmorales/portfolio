@@ -190,7 +190,7 @@ body {
     opacity: 0.7;
 }
 
-/* CAROUSEL STYLES - CLEANED UP, NO GAPS */
+/* ========== CAROUSEL STYLES ========== */
 .carousel {
     position: relative;
     grid-column: 1 / -1;
@@ -216,13 +216,16 @@ body {
     width: 100%;
 }
 
-.carousel.is-dragging { cursor: grabbing; }
+.carousel.is-dragging { 
+    cursor: grabbing; 
+}
 
 .carousel__track {
     display: flex;
     width: 100%;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
+    gap: 0;
 }
 
 .carousel__slide {
@@ -233,6 +236,15 @@ body {
     align-items: stretch;
 }
 
+/* Fix for images - prevents white lines */
+.carousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Fix for videos */
 .carousel__slide video {
     width: 100%;
     height: 100%;
@@ -240,11 +252,13 @@ body {
     display: block;
 }
 
+/* Fix for links around media */
 .carousel__slide a {
     width: 100%;
     height: 100%;
     display: block;
     line-height: 0;
+    text-decoration: none;
 }
 
 .carousel__arrows {
@@ -275,13 +289,15 @@ body {
     transition: opacity 0.2s ease;
 }
 
-.carousel__arrow:hover { opacity: 0.5; }
+.carousel__arrow:hover { 
+    opacity: 0.5; 
+}
 
 .carousel .project__image {
     padding-top: 0 !important;
 }
 
-/* PROJECT STYLES */
+/* ========== PROJECT STYLES ========== */
 .project {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -416,7 +432,7 @@ video {
     padding: 5px 9px;
 }
 
-/* PROJECT SPECIFIC PADDING */
+/* ========== PROJECT SPECIFIC PADDING ========== */
 .tcb {
     padding-top: 150px;
 }
@@ -450,7 +466,7 @@ video {
     padding-left: 15px;
 }
 
-/* FOOTER */
+/* ========== FOOTER ========== */
 .footer{
     position: fixed;
     bottom: 0;
@@ -548,7 +564,7 @@ video {
     transition: font-size 0.2s ease;
 }
 
-/* Menu Overlay */
+/* ========== MENU OVERLAY ========== */
 .menu-overlay {
     position: fixed;
     top: 0;
