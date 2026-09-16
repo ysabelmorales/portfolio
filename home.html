@@ -17,7 +17,7 @@
     <meta property="og:image" content="https://ysabelmorales.com/images/DeskCarousel-1400w/DeskCarousel-1400w-08.webp.webp" />
 
     
-    <style>
+      <style> 
     *{
         margin: 0;
         padding: 0;
@@ -26,6 +26,7 @@
     
     :root {
         --scroll-scale: 1;
+        --hero-scale: 3.4;
     }
     
     html{
@@ -65,7 +66,7 @@
         color: white;
         padding: 5px 6px;
         font-family: Helvetica, sans-serif;
-        font-size: 13px;
+        font-size: 20px;
         font-weight: 400;
         letter-spacing: 0.08em;
         text-decoration: none;
@@ -75,12 +76,12 @@
         display: flex;
         flex-direction: column-reverse; 
         align-items: center;
-        padding: 15px 10px;
-        gap: 30px;
+        padding: 40px 25px;
+        gap: 50px;
     }
     
     .sticky-badge-logo {
-        width: 45px;
+        width: 60px;
         height: auto;
         display: block;
         transform: rotate(180deg);
@@ -93,6 +94,11 @@
         transform: rotate(180deg); 
     }
     
+    /* ===== LOGO: fixed so it can move between hero (huge, centered) and
+       docked (top-left, normal header position) states. font-size/line-height
+       stay CONSTANT — only transform: scale() changes the visual size, so the
+       -50%/-50% centering math is always measured against the same box
+       (this is what prevents the squish/warp during the dock transition). */
     .logo{
         font-family: Helvetica, sans-serif;
         font-style:normal;
@@ -105,17 +111,86 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
-        font-size: calc(50px * var(--scroll-scale));
-        line-height: calc(47px * var(--scroll-scale));
-        transition: font-size 0.2s ease, line-height 0.2s ease;
+        font-size: 50px;
+        line-height: 47px;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        transform: translate(0, 0) scale(1);
+        z-index: 150;
     }
-    
+
+    /* transition lives ONLY here, added briefly by JS right when the dock
+       state actually flips — keeps ordinary window resizing instant/lag-free */
+    .logo.logo-transitioning{
+        transition: top 0.8s cubic-bezier(.65,0,.35,1),
+                    left 0.8s cubic-bezier(.65,0,.35,1),
+                    transform 0.8s cubic-bezier(.65,0,.35,1);
+    }
+
+    /* huge, centered on first load. --hero-scale is computed responsively
+       in JS from the viewport width (see the script near the end of body) */
+    .logo.logo-hero{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(var(--hero-scale));
+    }
+
     .logo-line {
-        background-color: rgba(116, 154, 187, 0.7);
+        position: relative;
+        background-color: transparent; /* the fill span below supplies the color now */
         display: inline-block;
         margin-bottom: -5px;
-        padding: calc(5px * var(--scroll-scale)) calc(10px * var(--scroll-scale));
-        transition: padding 0.2s ease;
+        padding: 5px 10px;
+    }
+
+    .logo-line-fill {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(116, 154, 187, 0.7);
+        clip-path: inset(0 100% 0 0); /* hidden until animated open by JS */
+        z-index: 0;
+    }
+
+    .logo-line-text {
+        position: relative;
+        z-index: 1;
+        white-space: pre;
+    }
+
+    /* the drag "cursor" that leads the highlight edge, snapping letter to letter */
+    .logo-line-handle {
+        position: absolute;
+        top: 10%;
+        bottom: 10%;
+        left: 0;
+        width: 3px;
+        background: rgba(0, 0, 0, 0.55);
+        border-radius: 1px;
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* blinking type-in caret */
+    .logo-cursor {
+        display: inline-block;
+        width: 0.05em;
+        height: 0.85em;
+        background: currentColor;
+        margin-left: 2px;
+        vertical-align: middle;
+        animation: logo-blink 0.9s steps(1) infinite;
+    }
+    .logo-cursor.hidden { opacity: 0; animation: none; }
+
+    @keyframes logo-blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .logo, .logo-cursor { transition: none; animation: none; }
     }
     
     .logo-line:last-child {
@@ -155,8 +230,7 @@
         color: white;
         padding-top: 3px;
         text-align: right;
-        font-size: calc(13px * var(--scroll-scale));
-        transition: font-size 0.2s ease;
+        font-size: 13px;
     }
     
     .la {
@@ -169,8 +243,7 @@
         color: white;
         padding-top: 4px;
         text-align: right;
-        font-size: calc(13px * var(--scroll-scale));
-        transition: font-size 0.2s ease;
+        font-size: 13px;
     }
     
     .time {
@@ -201,9 +274,8 @@
     
     .social-icons img {
         display: block;
-        transition: width 0.2s ease, height 0.2s ease;
-        width: calc(30px * var(--scroll-scale));
-        height: calc(30px * var(--scroll-scale));
+        width: 30px;
+        height: 30px;
     }
     
     .social-icons img:hover {
@@ -454,7 +526,7 @@
     
     /* ========== PROJECT SPECIFIC PADDING ========== */
     .tcb {
-        padding-top: 150px;
+        padding-top: 100vh;
     }
     
     .harmonichorizons {
@@ -562,10 +634,9 @@
         background-color: rgba(116, 154, 187, 0.7);
         display: inline-block;
         margin-bottom: 12px;
-        font-size: calc(40px * var(--scroll-scale));
-        line-height: calc(47px * var(--scroll-scale));
-        padding: calc(5px * var(--scroll-scale)) calc(15px * var(--scroll-scale));
-        transition: font-size 0.2s ease, line-height 0.2s ease, padding 0.2s ease;
+        font-size: 40px;
+        line-height: 47px;
+        padding: 5px 15px;
     }
     
     .footer-socials a:last-child {
@@ -580,8 +651,7 @@
         text-align: left;
         margin-top: 0;
         color: white;
-        font-size: calc(12px * var(--scroll-scale));
-        transition: font-size 0.2s ease;
+        font-size: 12px;
     }
     
     /* ========== MENU OVERLAY ========== */
@@ -639,9 +709,17 @@
     <!--========= HEADER ========-->
     <header class="header"> 
         <div class="header-column">
-            <a href="home.html" class="logo">
-                <span class="logo-line">Ysabel</span>
-                <span class="logo-line">Morales</span>
+            <a href="home.html" class="logo logo-hero" id="site-logo">
+                <span class="logo-line" id="logo-line-1">
+                    <span class="logo-line-fill" id="logo-fill-1"></span>
+                    <span class="logo-line-handle" id="logo-handle-1"></span>
+                    <span class="logo-line-text" id="logo-text-1"></span>
+                </span>
+                <span class="logo-line" id="logo-line-2">
+                    <span class="logo-line-fill" id="logo-fill-2"></span>
+                    <span class="logo-line-handle" id="logo-handle-2"></span>
+                    <span class="logo-line-text" id="logo-text-2"></span>
+                </span>
             </a>
         </div>
         <div class="header-column">
@@ -1071,5 +1149,126 @@
     </div>
 
     <script src="js/testing_2.js" defer></script>
+    <script>
+    // ===== Logo intro (home page only): type-in, letter-stepped highlight,
+    // hero-to-corner dock on scroll. Self-contained — does not touch
+    // testing_2.js/testing_2.css, and only runs here because this inline
+    // script only exists in home.html. =====
+    (function(){
+        var logoEl  = document.getElementById('site-logo');
+        var text1   = document.getElementById('logo-text-1');
+        var text2   = document.getElementById('logo-text-2');
+        var fill1   = document.getElementById('logo-fill-1');
+        var fill2   = document.getElementById('logo-fill-2');
+        var handle1 = document.getElementById('logo-handle-1');
+        var handle2 = document.getElementById('logo-handle-2');
+        if (!logoEl || !text1 || !text2) return; // safety: no-op if markup is missing
+
+        var word1 = "Ysabel", word2 = "Morales";
+        var typeSpeed = 90;
+
+        var cursor = document.createElement('span');
+        cursor.className = 'logo-cursor';
+
+        function typeInto(el, text, i, done){
+            if (i === 0) el.appendChild(cursor);
+            var letter = document.createElement('span');
+            letter.className = 'letter';
+            letter.textContent = text[i];
+            el.insertBefore(letter, cursor);
+            if (i < text.length - 1) {
+                setTimeout(function(){ typeInto(el, text, i + 1, done); }, typeSpeed);
+            } else {
+                setTimeout(done, 250);
+            }
+        }
+
+        function stepReveal(fillEl, handleEl, textEl, done){
+            var letters = textEl.querySelectorAll('.letter');
+            var stepDelay = 65;
+            var i = 0;
+            handleEl.style.opacity = 1;
+
+            function step(){
+                if (i < letters.length) {
+                    var isLast = i === letters.length - 1;
+                    if (isLast) {
+                        fillEl.style.clipPath = 'inset(0 0 0 0)';
+                        handleEl.style.left = fillEl.offsetWidth + 'px';
+                    } else {
+                        var edge = letters[i].offsetLeft + letters[i].offsetWidth;
+                        fillEl.style.clipPath = 'inset(0 calc(100% - ' + edge + 'px) 0 0)';
+                        handleEl.style.left = edge + 'px';
+                    }
+                    i++;
+                    setTimeout(step, stepDelay);
+                } else {
+                    handleEl.style.transition = 'opacity 0.25s ease';
+                    handleEl.style.opacity = 0;
+                    setTimeout(function(){
+                        handleEl.style.transition = '';
+                        done();
+                    }, 280);
+                }
+            }
+            step();
+        }
+
+        function playIntro(){
+            text1.appendChild(cursor);
+            setTimeout(function(){
+                typeInto(text1, word1, 0, function(){
+                    text2.appendChild(cursor);
+                    typeInto(text2, word2, 0, function(){
+                        setTimeout(function(){
+                            stepReveal(fill1, handle1, text1, function(){
+                                stepReveal(fill2, handle2, text2, function(){
+                                    cursor.classList.add('hidden');
+                                });
+                            });
+                        }, 700);
+                    });
+                });
+            }, 400);
+        }
+        window.addEventListener('load', playIntro);
+
+        // --hero-scale: computed from the viewport so the hero size is
+        // responsive per device. Recalculated on resize with no transition
+        // attached, so it tracks the window instantly rather than lagging.
+        var BASE_FONT_PX = 50; // matches .logo's fixed font-size
+        function updateHeroScale(){
+            var heroPx = Math.max(40, Math.min(230, window.innerWidth * 0.14));
+            var scale = heroPx / BASE_FONT_PX;
+            document.documentElement.style.setProperty('--hero-scale', scale.toFixed(3));
+        }
+        window.addEventListener('resize', updateHeroScale);
+        updateHeroScale();
+
+        // hero (huge, centered) <-> docked (top-left corner) on scroll
+        var DOCK_THRESHOLD = 40;
+        var isHero = true; // matches the logo-hero class already on the element at load
+        function setDocked(docked){
+            logoEl.classList.add('logo-transitioning'); // animate just this switch
+            if (docked) {
+                logoEl.classList.remove('logo-hero');
+            } else {
+                logoEl.classList.add('logo-hero');
+            }
+            setTimeout(function(){
+                logoEl.classList.remove('logo-transitioning'); // back to instant/resize-safe
+            }, 850);
+        }
+        function updateDockState(){
+            var shouldDock = window.scrollY > DOCK_THRESHOLD;
+            if (shouldDock === isHero) { // state actually needs to flip
+                isHero = !shouldDock;
+                setDocked(shouldDock);
+            }
+        }
+        window.addEventListener('scroll', updateDockState, { passive: true });
+        updateDockState();
+    })();
+    </script>
 </body>
 </html>

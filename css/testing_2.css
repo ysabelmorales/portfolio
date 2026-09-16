@@ -45,7 +45,7 @@ body {
     color: white;
     padding: 5px 6px;
     font-family: Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.08em;
     text-decoration: none;
@@ -55,12 +55,12 @@ body {
     display: flex;
     flex-direction: column-reverse; 
     align-items: center;
-    padding: 15px 10px;
-    gap: 30px;
+    padding: 20px 15px;
+    gap: 36px;
 }
 
 .sticky-badge-logo {
-    width: 45px;
+    width: 60px;
     height: auto;
     display: block;
     transform: rotate(180deg);
@@ -100,13 +100,13 @@ body {
 
 .logo-line:last-child {
     margin-bottom: 0;
-}
+}s
 
 .navbar a{
     font-family: Helvetica, sans-serif;
     font-style: normal;
     font-weight: 100;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.02em;
     text-decoration: none;
@@ -117,7 +117,7 @@ body {
     font-family: Helvetica, sans-serif;
     font-style: normal;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 16px;
     line-height: inherit;
     letter-spacing: 0.02em;
     text-decoration: none; 
