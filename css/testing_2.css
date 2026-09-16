@@ -73,6 +73,17 @@ body {
     transform: rotate(180deg); 
 }
 
+@media (max-width: 600px) {
+    .sticky-badge {
+        font-size: 12px;
+        padding: 12px 8px;
+        gap: 20px;
+    }
+    .sticky-badge-logo {
+        width: 36px;
+    }
+}
+
 .logo{
     font-family: Helvetica, sans-serif;
     font-style:normal;
