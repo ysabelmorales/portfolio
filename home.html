@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ysabel Morales — Graphic Designer & Visual Artist</title>
+    <title>Ysabel Morales — Graphic Designer &amp; Visual Artist</title>
     <link rel="icon" href="../images/Favicon/Favicon_Final.webp" type="image/x-icon">
     <meta name="description" content="Graphic designer and visual artist based in Los Angeles. BFA from Otis College of Art and Design. Work spans print, branding, bookbinding, and exhibition design.">
     <meta property="og:title" content="Ysabel Morales — Graphic Designer">
@@ -27,6 +27,7 @@
     :root {
         --scroll-scale: 1;
         --hero-scale: 3.4;
+        --logo-progress: 1; /* 1 = hero (centered, huge), 0 = docked (top-left, normal) */
     }
     
     html{
@@ -104,11 +105,12 @@
     }
 }
     
-    /* ===== LOGO: fixed so it can move between hero (huge, centered) and
-       docked (top-left, normal header position) states. font-size/line-height
-       stay CONSTANT — only transform: scale() changes the visual size, so the
-       -50%/-50% centering math is always measured against the same box
-       (this is what prevents the squish/warp during the dock transition). */
+    /* ===== LOGO: continuously scrubbed by scroll position via --logo-progress
+       (set every scroll frame in JS, no easing/transition on purpose — it should
+       track the scrollbar exactly). --logo-progress: 1 = hero (centered, huge),
+       0 = docked (top-left corner, normal size). Everything in between is a
+       live blend of the two, so the shrink plays out exactly as fast/slow as
+       the user scrolls. */
     .logo{
         font-family: Helvetica, sans-serif;
         font-style:normal;
@@ -124,31 +126,16 @@
         font-size: 50px;
         line-height: 47px;
         position: fixed;
-        top: 15px;
-        left: 15px;
-        transform: translate(0, 0) scale(1);
+        top: calc(15px + (50vh - 15px) * var(--logo-progress));
+        left: calc(15px + (50vw - 15px) * var(--logo-progress));
+        transform: translate(calc(-50% * var(--logo-progress)), calc(-50% * var(--logo-progress)))
+                   scale(calc(1 + (var(--hero-scale) - 1) * var(--logo-progress)));
         z-index: 150;
-    }
-
-    /* transition lives ONLY here, added briefly by JS right when the dock
-       state actually flips — keeps ordinary window resizing instant/lag-free */
-    .logo.logo-transitioning{
-        transition: top 0.8s cubic-bezier(.65,0,.35,1),
-                    left 0.8s cubic-bezier(.65,0,.35,1),
-                    transform 0.8s cubic-bezier(.65,0,.35,1);
-    }
-
-    /* huge, centered on first load. --hero-scale is computed responsively
-       in JS from the viewport width (see the script near the end of body) */
-    .logo.logo-hero{
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(var(--hero-scale));
     }
 
     .logo-line {
         position: relative;
-        background-color: transparent; /* the fill span below supplies the color now */
+        background-color: transparent;
         display: inline-block;
         margin-bottom: -5px;
         padding: 5px 10px;
@@ -158,7 +145,7 @@
         position: absolute;
         inset: 0;
         background-color: rgba(116, 154, 187, 0.7);
-        clip-path: inset(0 100% 0 0); /* hidden until animated open by JS */
+        clip-path: inset(0 100% 0 0);
         z-index: 0;
     }
 
@@ -168,7 +155,6 @@
         white-space: pre;
     }
 
-    /* the drag "cursor" that leads the highlight edge, snapping letter to letter */
     .logo-line-handle {
         position: absolute;
         top: 10%;
@@ -182,7 +168,6 @@
         pointer-events: none;
     }
 
-    /* blinking type-in caret */
     .logo-cursor {
         display: inline-block;
         width: 0.05em;
@@ -292,7 +277,6 @@
         opacity: 0.7;
     }
     
-    /* ========== CAROUSEL STYLES ========== */
     .carousel {
         position: relative;
         grid-column: 1 / -1;
@@ -302,7 +286,6 @@
         user-select: none;
     }
     
-    /* Remove space between stacked carousels */
     .project .carousel {
         margin: 0;
         padding: 0;
@@ -338,7 +321,6 @@
         align-items: stretch;
     }
     
-    /* Fix for images - prevents white lines */
     .carousel__slide img {
         width: 100%;
         height: 100%;
@@ -346,7 +328,6 @@
         display: block;
     }
     
-    /* Fix for videos */
     .carousel__slide video {
         width: 100%;
         height: 100%;
@@ -354,7 +335,6 @@
         display: block;
     }
     
-    /* Fix for links around media */
     .carousel__slide a {
         width: 100%;
         height: 100%;
@@ -399,7 +379,6 @@
         padding-top: 0 !important;
     }
     
-    /* ========== PROJECT STYLES ========== */
     .project {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -534,7 +513,6 @@
         padding: 5px 9px;
     }
     
-    /* ========== PROJECT SPECIFIC PADDING ========== */
     .tcb {
         padding-top: 100vh;
     }
@@ -568,7 +546,6 @@
         padding-left: 15px;
     }
     
-    /* ========== FOOTER ========== */
     .footer{
         position: fixed;
         bottom: 0;
@@ -664,7 +641,6 @@
         font-size: 12px;
     }
     
-    /* ========== MENU OVERLAY ========== */
     .menu-overlay {
         position: fixed;
         top: 0;
@@ -716,10 +692,9 @@
 </head>
 
 <body> 
-    <!--========= HEADER ========-->
     <header class="header"> 
         <div class="header-column">
-            <a href="home.html" class="logo logo-hero" id="site-logo">
+            <a href="home.html" class="logo" id="site-logo">
                 <span class="logo-line" id="logo-line-1">
                     <span class="logo-line-fill" id="logo-fill-1"></span>
                     <span class="logo-line-handle" id="logo-handle-1"></span>
@@ -751,15 +726,12 @@
         </div>
     </header>
 
-    <!--========= BADGE ========-->
     <a href="paris/parisolympics.html" class="sticky-badge" target="_blank">
         <span class="sticky-badge-text">Winner.</span>
         <img src="images/Stickybadge/ParisLogo.webp" alt="Paris 2024" class="sticky-badge-logo" width="48" height="64">
     </a>
 
-    <!--========= MAIN CONTENT ========-->
     <main> 
-        <!-- Project 1: The Companion Bible -->
         <section class="project tcb">
             <div class="carousel">
                 <div class="carousel__track">
@@ -839,7 +811,6 @@
             </div>
         </section>
 
-        <!-- Project 2: Summaeverythang -->
         <section class="project summa">
             <div class="carousel">
                 <div class="carousel__track">
@@ -935,7 +906,6 @@
             </div>
         </section>
 
-        <!-- Project 3: Cultural Olympiad -->
         <section class="project culturalolympiad">
             <div class="carousel">
                 <div class="carousel__track">
@@ -1031,9 +1001,7 @@
             </div>
         </section>
 
-        <!-- Project 4: Harmonic Horizons -->
         <section class="project harmonichorizons">
-            <!-- CAROUSEL 1 -->
             <div class="carousel">
                 <div class="carousel__track">
                     <div class="carousel__slide">
@@ -1072,7 +1040,6 @@
                     <button class="carousel__arrow next">&#62;</button>
                 </div>
             </div>
-            <!-- CAROUSEL 2 -->
             <div class="carousel">
                 <div class="carousel__track">
                     <div class="carousel__slide">
@@ -1134,7 +1101,6 @@
         </section>
     </main>
 
-    <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="footer-column">
             <div>
@@ -1149,7 +1115,6 @@
         </div>
     </footer> 
 
-    <!-- Full Screen Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay">
         <nav class="menu-overlay-nav">
             <a href="works/works.html" class="menu-overlay-link active">Works</a>                
@@ -1160,10 +1125,6 @@
 
     <script src="js/testing_2.js" defer></script>
     <script>
-    // ===== Logo intro (home page only): type-in, letter-stepped highlight,
-    // hero-to-corner dock on scroll. Self-contained — does not touch
-    // testing_2.js/testing_2.css, and only runs here because this inline
-    // script only exists in home.html. =====
     (function(){
         var logoEl  = document.getElementById('site-logo');
         var text1   = document.getElementById('logo-text-1');
@@ -1172,7 +1133,7 @@
         var fill2   = document.getElementById('logo-fill-2');
         var handle1 = document.getElementById('logo-handle-1');
         var handle2 = document.getElementById('logo-handle-2');
-        if (!logoEl || !text1 || !text2) return; // safety: no-op if markup is missing
+        if (!logoEl || !text1 || !text2) return;
 
         var word1 = "Ysabel", word2 = "Morales";
         var typeSpeed = 90;
@@ -1243,10 +1204,7 @@
         }
         window.addEventListener('load', playIntro);
 
-        // --hero-scale: computed from the viewport so the hero size is
-        // responsive per device. Recalculated on resize with no transition
-        // attached, so it tracks the window instantly rather than lagging.
-        var BASE_FONT_PX = 50; // matches .logo's fixed font-size
+        var BASE_FONT_PX = 50;
         function updateHeroScale(){
             var heroPx = Math.max(40, Math.min(230, window.innerWidth * 0.14));
             var scale = heroPx / BASE_FONT_PX;
@@ -1255,29 +1213,36 @@
         window.addEventListener('resize', updateHeroScale);
         updateHeroScale();
 
-        // hero (huge, centered) <-> docked (top-left corner) on scroll
-        var DOCK_THRESHOLD = 40;
-        var isHero = true; // matches the logo-hero class already on the element at load
-        function setDocked(docked){
-            logoEl.classList.add('logo-transitioning'); // animate just this switch
-            if (docked) {
-                logoEl.classList.remove('logo-hero');
-            } else {
-                logoEl.classList.add('logo-hero');
-            }
-            setTimeout(function(){
-                logoEl.classList.remove('logo-transitioning'); // back to instant/resize-safe
-            }, 850);
+        // ===== logo shrink-to-corner, scrubbed live with scroll position =====
+        // --logo-progress goes 1 (hero: centered, huge) -> 0 (docked: top-left,
+        // normal size) as you scroll through SCROLL_RANGE px. Rather than setting
+        // the CSS var straight to the raw scroll ratio (which inherits every
+        // little stutter/step of the scroll events themselves, especially on
+        // trackpads/wheels), it eases toward that target every animation frame —
+        // a "lazy follow" that smooths out the motion while still tracking
+        // scroll direction and overall speed closely.
+        var SCROLL_RANGE = 300; // px of scroll over which the logo fully docks
+        var SMOOTHING = 0.09;   // 0–1, how quickly it catches up each frame — lower = smoother/laggier, higher = snappier/closer to raw scroll
+
+        var targetProgress = 1;
+        var currentProgress = 1;
+
+        function updateTargetProgress(){
+            targetProgress = 1 - Math.max(0, Math.min(1, window.scrollY / SCROLL_RANGE));
         }
-        function updateDockState(){
-            var shouldDock = window.scrollY > DOCK_THRESHOLD;
-            if (shouldDock === isHero) { // state actually needs to flip
-                isHero = !shouldDock;
-                setDocked(shouldDock);
+
+        function animateLogoProgress(){
+            currentProgress += (targetProgress - currentProgress) * SMOOTHING;
+            if (Math.abs(targetProgress - currentProgress) < 0.0005) {
+                currentProgress = targetProgress; // settle exactly once close enough
             }
+            document.documentElement.style.setProperty('--logo-progress', currentProgress.toFixed(4));
+            requestAnimationFrame(animateLogoProgress);
         }
-        window.addEventListener('scroll', updateDockState, { passive: true });
-        updateDockState();
+
+        window.addEventListener('scroll', updateTargetProgress, { passive: true });
+        updateTargetProgress();
+        requestAnimationFrame(animateLogoProgress);
     })();
     </script>
 </body>
