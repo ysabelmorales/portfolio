@@ -627,6 +627,14 @@
         padding: 5px 15px;
     }
     
+    .scroll-btn {
+        cursor: pointer;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+    
     .footer-socials a:last-child {
         margin-bottom: 0;
     }
@@ -1110,7 +1118,8 @@
         </div>
         <div class="footer-column">
             <div class="footer-socials">
-                <a href="#">^</a>
+                <a href="#" class="scroll-btn" data-dir="-1" aria-label="Scroll up">^</a>
+                <a href="#" class="scroll-btn" data-dir="1" aria-label="Scroll down">v</a>
                 <a href="#">Menu</a>
             </div>
         </div>
@@ -1305,6 +1314,52 @@
                 }
         
                 requestAnimationFrame(frame);
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var HOLD_SPEED = 900;  // px per second while held: higher = faster
+            var HOLD_DELAY = 250;  // ms of pressing before it counts as a hold
+            var TAP_AMOUNT = 0.8;  // a quick tap scrolls this much of the screen
+
+            document.querySelectorAll('.scroll-btn').forEach(function (btn) {
+                var dir = Number(btn.dataset.dir);
+                var holdTimer = null, holding = false, rafId = null, last = null;
+
+                function loop(t) {
+                    var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.05);
+                    last = t;
+                    window.scrollBy({ top: dir * HOLD_SPEED * dt, behavior: 'instant' });
+                    rafId = requestAnimationFrame(loop);
+                }
+
+                function stop() {
+                    clearTimeout(holdTimer);
+                    cancelAnimationFrame(rafId);
+                    holdTimer = rafId = last = null;
+                }
+
+                btn.addEventListener('pointerdown', function (e) {
+                    e.preventDefault();
+                    if (btn.setPointerCapture) btn.setPointerCapture(e.pointerId);
+                    holding = false;
+                    holdTimer = setTimeout(function () {
+                        holding = true;
+                        rafId = requestAnimationFrame(loop);
+                    }, HOLD_DELAY);
+                });
+
+                btn.addEventListener('pointerup', function () {
+                    if (!holding) {
+                        window.scrollBy({ top: dir * window.innerHeight * TAP_AMOUNT, behavior: 'smooth' });
+                    }
+                    stop();
+                });
+
+                btn.addEventListener('pointercancel', stop);
+                btn.addEventListener('click', function (e) { e.preventDefault(); });
+                btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
             });
         })();
     </script>

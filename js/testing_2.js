@@ -46,17 +46,6 @@ window.addEventListener('scroll', () => {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Scroll to top
-    const scrollToTopLinks = document.querySelectorAll('.footer-socials a');
-    scrollToTopLinks.forEach(link => {
-        if (link.textContent.trim() === '^') {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-    });
-    
     // Menu overlay
     const menuOverlay = document.getElementById('menuOverlay');
     const menuButtons = document.querySelectorAll('.footer-socials a');
@@ -88,22 +77,5 @@ document.addEventListener('DOMContentLoaded', function() {
     updateScale();
 });
 
-// Carousel
-function initCarousel(el) {
-    const track = el.querySelector('.carousel__track');
-    const slides = el.querySelectorAll('.carousel__slide');
-    const prev = el.querySelector('.prev');
-    const next = el.querySelector('.next');
-    let current = 0;
-
-    function goTo(index) {
-        current = Math.max(0, Math.min(index, slides.length - 1));
-        track.style.transition = 'transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94)';
-        track.style.transform = `translateX(-${current * 100}%)`;
-    }
-
-    prev.addEventListener('click', () => goTo(current - 1));
-    next.addEventListener('click', () => goTo(current + 1));
-}
-
-document.querySelectorAll('.carousel').forEach(initCarousel);
+// Carousels and the ^ / v scroll buttons now live in the <script> tags
+// at the bottom of the HTML file, so they aren't repeated here.
