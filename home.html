@@ -1118,8 +1118,8 @@
         </div>
         <div class="footer-column">
             <div class="footer-socials">
-                <a href="#" class="scroll-btn" data-dir="-1" aria-label="Scroll up">^</a>
-                <a href="#" class="scroll-btn" data-dir="1" aria-label="Scroll down">v</a>
+                <a class="scroll-btn" role="button" tabindex="0" data-dir="-1" aria-label="Scroll up">^</a>
+                <a class="scroll-btn" role="button" tabindex="0" data-dir="1" aria-label="Scroll down">v</a>
                 <a href="#">Menu</a>
             </div>
         </div>
@@ -1323,6 +1323,19 @@
             var HOLD_DELAY = 250;  // ms of pressing before it counts as a hold
             var TAP_AMOUNT = 0.8;  // a quick tap scrolls this much of the screen
 
+            // Instant scroll that works even with html { scroll-behavior: smooth }
+            function nudge(d) {
+                var h = document.documentElement;
+                var prev = h.style.scrollBehavior;
+                h.style.scrollBehavior = 'auto';
+                window.scrollBy(0, d);
+                h.style.scrollBehavior = prev;
+            }
+
+            function tap(dir) {
+                window.scrollBy({ top: dir * window.innerHeight * TAP_AMOUNT, behavior: 'smooth' });
+            }
+
             document.querySelectorAll('.scroll-btn').forEach(function (btn) {
                 var dir = Number(btn.dataset.dir);
                 var holdTimer = null, holding = false, rafId = null, last = null;
@@ -1330,7 +1343,7 @@
                 function loop(t) {
                     var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.05);
                     last = t;
-                    window.scrollBy({ top: dir * HOLD_SPEED * dt, behavior: 'instant' });
+                    nudge(dir * HOLD_SPEED * dt);
                     rafId = requestAnimationFrame(loop);
                 }
 
@@ -1352,14 +1365,17 @@
 
                 btn.addEventListener('pointerup', function () {
                     if (!holding) {
-                        window.scrollBy({ top: dir * window.innerHeight * TAP_AMOUNT, behavior: 'smooth' });
+                        tap(dir);
                     }
                     stop();
                 });
 
                 btn.addEventListener('pointercancel', stop);
-                btn.addEventListener('click', function (e) { e.preventDefault(); });
+                btn.addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); }); // blocks any old scroll-to-top code
                 btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+                btn.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tap(dir); }
+                });
             });
         })();
     </script>
