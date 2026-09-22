@@ -513,7 +513,8 @@
         padding: 5px 9px;
     }
     
-    .tcb {
+    /* Room for the big centered name — goes to whichever project is first */
+    main > .project:first-child {
         padding-top: 100vh;
     }
     
@@ -732,85 +733,6 @@
     </a>
 
     <main> 
-        <section class="project tcb">
-            <div class="carousel">
-                <div class="carousel__track">
-                    <div class="carousel__slide">
-                        <video class="project__image" width="1400" height="800" autoplay loop muted playsinline preload="metadata" fetchpriority="high">
-                            <source src="images/mp4-1400w/TCB22.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="carousel__slide">
-                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-12.webp"
-                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-12.webp 800w,
-                                    images/DeskCarousel-1400w/DeskCarousel-1400w-12.webp 1400w"
-                            sizes="(max-width: 768px) 800px, 1400px"
-                            class="project__image" alt="The Companion Bible Screenprinted Shirt" width="1400" height="800"
-                            fetchpriority="high">
-                    </div>
-                    <div class="carousel__slide">
-                        <video width="1400" height="800" autoplay loop muted playsinline preload="metadata">
-                            <source src="images/mp4-1400w/ThesisBook2.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-                <div class="carousel__arrows">
-                    <button class="carousel__arrow prev">&#60;</button>
-                    <button class="carousel__arrow next">&#62;</button>
-                </div>
-            </div>
-        
-            <div class="carousel">
-                <div class="carousel__track">
-                    <div class="carousel__slide">
-                        <video class="project__image" width="1400" height="800" autoplay loop muted playsinline preload="metadata">
-                            <source src="images/mp4-1400w/TCB2.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="carousel__slide">
-                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-15.webp"
-                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-15.webp 800w,
-                                    images/DeskCarousel-1400w/DeskCarousel-1400w-15.webp 1400w"
-                            sizes="(max-width: 768px) 800px, 1400px"
-                            class="project__image" alt="The Companion Bible" width="1400" height="800"
-                            loading="lazy">
-                    </div>
-                    <div class="carousel__slide">
-                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-13.webp"
-                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-13.webp 800w,
-                                    images/DeskCarousel-1400w/DeskCarousel-1400w-13.webp 1400w"
-                            sizes="(max-width: 768px) 800px, 1400px"
-                            class="project__image" alt="The Companion Bible" width="1400" height="800"
-                            loading="lazy">
-                    </div>
-                </div>
-                <div class="carousel__arrows">
-                    <button class="carousel__arrow prev">&#60;</button>
-                    <button class="carousel__arrow next">&#62;</button>
-                </div>
-            </div>
-            <div class="project__tags">
-                <a href="works/works.html?filter=Branding">Branding</a>
-                <a href="works/works.html?filter=Editorial">Editorial</a>
-                <a href="works/works.html?filter=Exhibition">Exhibition</a>
-            </div>
-            <div class="project__specs">
-                <p>Inkjet</p>
-                <p>Screenprint</p>
-                <p>Bookbinding</p>
-            </div>
-            <div class="project__description">
-                <p class="project_title">The Companion Bible</p>
-                <br>
-                <p>Limited print Edition 1 of 3 held in the Otis College's library's <a href="https://otis.libguides.com/special_collections" class="paragraph__link">Special Collections.</a> A BFA thesis exploring my own religious deconstruction through print. Six handbound works created using coptic stitching, screenprinting and ASCII art overlays to examine our inherited faith and lived experiences. Each work takes inspiration from different formats: devotional book, voter pamphlet, recipe card etc... 
-                </p>
-                <br>
-                <br>
-                <a href="tcb/tcb.html" class="project__link">See more</a>
-                <a href="tcb/tcb.html" class="project__link project__link--arrow">></a>
-            </div>
-        </section>
-
         <section class="project summa">
             <div class="carousel">
                 <div class="carousel__track">
@@ -903,6 +825,85 @@
                 <br>
                 <a href="summa/summa.html" class="project__link">See more</a>
                 <a href="summa/summa.html" class="project__link project__link--arrow">></a>
+            </div>
+        </section>
+
+        <section class="project tcb">
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <video class="project__image" width="1400" height="800" autoplay loop muted playsinline preload="metadata" fetchpriority="high">
+                            <source src="images/mp4-1400w/TCB22.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="carousel__slide">
+                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-12.webp"
+                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-12.webp 800w,
+                                    images/DeskCarousel-1400w/DeskCarousel-1400w-12.webp 1400w"
+                            sizes="(max-width: 768px) 800px, 1400px"
+                            class="project__image" alt="The Companion Bible Screenprinted Shirt" width="1400" height="800"
+                            fetchpriority="high">
+                    </div>
+                    <div class="carousel__slide">
+                        <video width="1400" height="800" autoplay loop muted playsinline preload="metadata">
+                            <source src="images/mp4-1400w/ThesisBook2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
+                </div>
+            </div>
+        
+            <div class="carousel">
+                <div class="carousel__track">
+                    <div class="carousel__slide">
+                        <video class="project__image" width="1400" height="800" autoplay loop muted playsinline preload="metadata">
+                            <source src="images/mp4-1400w/TCB2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="carousel__slide">
+                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-15.webp"
+                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-15.webp 800w,
+                                    images/DeskCarousel-1400w/DeskCarousel-1400w-15.webp 1400w"
+                            sizes="(max-width: 768px) 800px, 1400px"
+                            class="project__image" alt="The Companion Bible" width="1400" height="800"
+                            loading="lazy">
+                    </div>
+                    <div class="carousel__slide">
+                        <img src="images/DeskCarousel-1400w/DeskCarousel-1400w-13.webp"
+                            srcset="images/MobileCarousel-800w/MobileCarousel-800w-13.webp 800w,
+                                    images/DeskCarousel-1400w/DeskCarousel-1400w-13.webp 1400w"
+                            sizes="(max-width: 768px) 800px, 1400px"
+                            class="project__image" alt="The Companion Bible" width="1400" height="800"
+                            loading="lazy">
+                    </div>
+                </div>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow prev">&#60;</button>
+                    <button class="carousel__arrow next">&#62;</button>
+                </div>
+            </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Branding">Branding</a>
+                <a href="works/works.html?filter=Editorial">Editorial</a>
+                <a href="works/works.html?filter=Exhibition">Exhibition</a>
+            </div>
+            <div class="project__specs">
+                <p>Inkjet</p>
+                <p>Screenprint</p>
+                <p>Bookbinding</p>
+            </div>
+            <div class="project__description">
+                <p class="project_title">The Companion Bible</p>
+                <br>
+                <p>Limited print Edition 1 of 3 held in the Otis College's library's <a href="https://otis.libguides.com/special_collections" class="paragraph__link">Special Collections.</a> A BFA thesis exploring my own religious deconstruction through print. Six handbound works created using coptic stitching, screenprinting and ASCII art overlays to examine our inherited faith and lived experiences. Each work takes inspiration from different formats: devotional book, voter pamphlet, recipe card etc... 
+                </p>
+                <br>
+                <br>
+                <a href="tcb/tcb.html" class="project__link">See more</a>
+                <a href="tcb/tcb.html" class="project__link project__link--arrow">></a>
             </div>
         </section>
 
