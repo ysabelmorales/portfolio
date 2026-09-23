@@ -411,9 +411,10 @@
         padding-top: 40px;
         letter-spacing: -0.07em;
         grid-column: span 1;
-        justify-content: right;
+        justify-content: flex-start;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 8px;
         align-items: flex-start;
     }
@@ -442,6 +443,7 @@
         padding-left: 15px;
         grid-column: span 1;
         display: flex;
+        flex-direction: column;
         gap: 10px;
         align-items: flex-start;
         justify-content: flex-start;
@@ -528,11 +530,11 @@
     }
     
     .summa .project__specs {
-        padding-left: 40px;
+        padding-left: 15px;
     }
     
     .summa .project__tags {
-        padding-left: 15px;
+        padding-left: 40px;
     }
     
     .summa .project__description {
@@ -544,11 +546,11 @@
     }
     
     .tcb .project__specs {
-        padding-left: 50px;
+        padding-left: 15px;
     }
     
     .tcb .project__tags {
-        padding-left: 15px;
+        padding-left: 50px;
     }
     
     .footer{
@@ -556,7 +558,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 15px;
+        padding: 15px; /* matches the logo's 15px gap from the top-left */
         background-color: transparent;
         display: flex;
         justify-content: space-between;
@@ -701,6 +703,23 @@
     .menu-overlay-link.active {
         text-decoration: none;
     }
+    /* ===== Mobile: keep tags on one line ===== */
+    @media (max-width: 600px) {
+        main .project .project__tags {
+            grid-column: span 2;      /* use the middle + right columns */
+            flex-wrap: nowrap;
+            gap: 6px;
+            padding-left: 15px;
+        }
+        main .project .project__tags a {
+            font-size: 12px;
+            padding: 6px 5px;
+            white-space: nowrap;
+        }
+        main .project .project__description {
+            padding-left: 15px;       /* line up with the tags above */
+        }
+    }
     </style>
 </head>
 
@@ -819,15 +838,15 @@
                     <button class="carousel__arrow next">&#62;</button>
                 </div>
             </div>
-            <div class="project__tags">
-                <a href="works/works.html?filter=Branding">Branding</a>
-                <a href="works/works.html?filter=Print">Print</a>
-                <a href="works/works.html?filter=Packaging">Packaging</a>
-            </div>
             <div class="project__specs">
                 <p>Print</p>
                 <p>Website</p>
                 <p>Socials</p>
+            </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Branding">Branding</a>
+                <a href="works/works.html?filter=Print">Print</a>
+                <a href="works/works.html?filter=Packaging">Packaging</a>
             </div>
             <div class="project__description">
                 <p class="project_title">Summaeverythang</p>
@@ -897,15 +916,15 @@
                     <button class="carousel__arrow next">&#62;</button>
                 </div>
             </div>
-            <div class="project__tags">
-                <a href="works/works.html?filter=Branding">Branding</a>
-                <a href="works/works.html?filter=Editorial">Editorial</a>
-                <a href="works/works.html?filter=Exhibition">Exhibition</a>
-            </div>
             <div class="project__specs">
                 <p>Inkjet</p>
                 <p>Screenprint</p>
                 <p>Bookbinding</p>
+            </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Branding">Branding</a>
+                <a href="works/works.html?filter=Editorial">Editorial</a>
+                <a href="works/works.html?filter=Exhibition">Exhibition</a>
             </div>
             <div class="project__description">
                 <p class="project_title">The Companion Bible</p>
@@ -993,15 +1012,15 @@
                     <button class="carousel__arrow next">&#62;</button>
                 </div>
             </div>
-            <div class="project__tags">
-                <a href="works/works.html?filter=Print">Print</a>
-                <a href="works/works.html?filter=Civic Design">Civic Design</a>
-                <a href="works/works.html?filter=Exhibition">Exhibition</a>
-            </div>
             <div class="project__specs">
                 <p>Print</p>
                 <p>Motion</p>
                 <p>Digital</p>
+            </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Print">Print</a>
+                <a href="works/works.html?filter=Civic Design">Civic Design</a>
+                <a href="works/works.html?filter=Exhibition">Exhibition</a>
             </div>
             <div class="project__description">
                 <p class="project_title">Cultural Olympiad <br> Poster Competition</p>
@@ -1091,15 +1110,15 @@
                     <button class="carousel__arrow next">&#62;</button>
                 </div>
             </div>
-            <div class="project__tags">
-                <a href="works/works.html?filter=Branding">Branding</a>
-                <a href="works/works.html?filter=Experiential">Experiential</a>
-                <a href="works/works.html?filter=Packaging">Packaging</a>
-            </div>
             <div class="project__specs">
                 <p>Motion</p>
                 <p>Print</p>
                 <p>Packaging</p>
+            </div>
+            <div class="project__tags">
+                <a href="works/works.html?filter=Branding">Branding</a>
+                <a href="works/works.html?filter=Experiential">Experiential</a>
+                <a href="works/works.html?filter=Packaging">Packaging</a>
             </div>
             <div class="project__description">
                 <p class="project_title">Harmonic Horizons</p>
@@ -1138,6 +1157,7 @@
     </div>
 
     <script src="js/testing_2.js" defer></script>
+    <script src="js/carousel.js" defer></script>
     <script>
     (function(){
         var logoEl  = document.getElementById('site-logo');
@@ -1258,68 +1278,6 @@
         updateTargetProgress();
         requestAnimationFrame(animateLogoProgress);
     })();
-    </script>
-    <script>
-        (function () {
-            var SECONDS_PER_SLIDE = 20; // drift speed: higher = slower
-            var ARROW_TIME = 0.6;       // how long an arrow click takes to glide (s)
-        
-            document.querySelectorAll('.carousel').forEach(function (el) {
-                var track = el.querySelector('.carousel__track');
-                if (!track) return;
-                var slides = track.querySelectorAll('.carousel__slide');
-                var n = slides.length;
-                if (n < 2) return;
-        
-                // Copy the first slide onto the end so the loop is seamless
-                track.appendChild(slides[0].cloneNode(true));
-                track.style.transition = 'none';
-        
-                var pos = 0, last = null, jump = null, visible = true;
-        
-                function ease(k) { return k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; }
-        
-                function frame(t) {
-                    var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.1);
-                    last = t;
-        
-                    if (visible) {
-                        if (jump) {
-                            jump.elapsed += dt;
-                            var k = Math.min(jump.elapsed / ARROW_TIME, 1);
-                            pos = jump.from + (jump.to - jump.from) * ease(k);
-                            if (k === 1) jump = null;
-                        } else {
-                            pos += dt / SECONDS_PER_SLIDE;
-                        }
-                        if (pos >= n) { pos -= n; if (jump) { jump.from -= n; jump.to -= n; } }
-                        if (pos < 0)  { pos += n; if (jump) { jump.from += n; jump.to += n; } }
-                        track.style.transform = 'translateX(' + (-pos * 100) + '%)';
-                    }
-                    requestAnimationFrame(frame);
-                }
-        
-                function jumpTo(dir) {
-                    var base = jump ? jump.to : pos;
-                    var to = dir > 0 ? Math.floor(base + 0.001) + 1 : Math.ceil(base - 0.001) - 1;
-                    jump = { from: pos, to: to, elapsed: 0 };
-                }
-        
-                var prev = el.querySelector('.prev');
-                var next = el.querySelector('.next');
-                if (prev) prev.addEventListener('click', function () { jumpTo(-1); });
-                if (next) next.addEventListener('click', function () { jumpTo(1); });
-        
-                // Pause the drift while a carousel is scrolled off screen
-                if ('IntersectionObserver' in window) {
-                    new IntersectionObserver(function (entries) {
-                        visible = entries[0].isIntersecting;
-                    }).observe(el);
-                }
-        
-                requestAnimationFrame(frame);
-            });
-        })();
     </script>
     <script>
         (function () {
