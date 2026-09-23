@@ -1278,40 +1278,84 @@
     })();
     </script>
     <script>
+        // ===== ^ / v scroll buttons: eased tap glide + hold with momentum =====
         (function () {
-            var HOLD_SPEED = 900;  // px per second while held: higher = faster
-            var HOLD_DELAY = 250;  // ms of pressing before it counts as a hold
-            var TAP_AMOUNT = 0.8;  // a quick tap scrolls this much of the screen
+            var MAX_SPEED  = 1100; // px per second at full hold speed
+            var RAMP       = 5;    // how fast hold speed eases in/out: lower = smoother, higher = snappier
+            var HOLD_DELAY = 200;  // ms of pressing before it counts as a hold
+            var TAP_AMOUNT = 0.8;  // a tap glides this much of the screen
+            var TAP_TIME   = 750;  // ms a tap glide takes: higher = slower, smoother
 
-            // Instant scroll that works even with html { scroll-behavior: smooth }
-            function nudge(d) {
-                var h = document.documentElement;
-                var prev = h.style.scrollBehavior;
-                h.style.scrollBehavior = 'auto';
-                window.scrollBy(0, d);
-                h.style.scrollBehavior = prev;
+            var html = document.documentElement;
+            var pos = 0, velocity = 0, target = 0, glide = null, rafId = null, last = null;
+
+            function maxScroll() { return html.scrollHeight - window.innerHeight; }
+
+            // Set scroll instantly, even though html has scroll-behavior: smooth
+            function setScroll(y) {
+                var prev = html.style.scrollBehavior;
+                html.style.scrollBehavior = 'auto';
+                window.scrollTo(0, y);
+                html.style.scrollBehavior = prev;
             }
 
-            function tap(dir) {
-                window.scrollBy({ top: dir * window.innerHeight * TAP_AMOUNT, behavior: 'smooth' });
+            function easeInOut(k) { return k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; }
+
+            function tick(t) {
+                var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.05);
+                last = t;
+
+                if (glide) {
+                    var k = Math.max(0, Math.min((performance.now() - glide.start) / TAP_TIME, 1));
+                    pos = glide.from + (glide.to - glide.from) * easeInOut(k);
+                    setScroll(pos);
+                    if (k === 1) glide = null;
+                } else {
+                    // speed eases toward the target speed (full speed while held, 0 after release)
+                    velocity += (target - velocity) * Math.min(1, RAMP * dt);
+                    pos = Math.max(0, Math.min(maxScroll(), pos + velocity * dt));
+                    setScroll(pos);
+                    if (target === 0 && Math.abs(velocity) < 5) velocity = 0;
+                    if (pos <= 0 || pos >= maxScroll()) { if (target === 0) velocity = 0; }
+                }
+
+                if (glide || target !== 0 || velocity !== 0) {
+                    rafId = requestAnimationFrame(tick);
+                } else {
+                    rafId = null;
+                    last = null;
+                }
             }
+
+            function run() {
+                if (!rafId) { last = null; rafId = requestAnimationFrame(tick); }
+            }
+
+            function startGlide(dir) {
+                var from = glide ? pos : window.scrollY;
+                var base = glide ? glide.to : from;   // tapping again mid-glide goes further
+                var to = Math.max(0, Math.min(maxScroll(), base + dir * window.innerHeight * TAP_AMOUNT));
+                velocity = 0; target = 0;
+                pos = from;
+                glide = { from: from, to: to, start: performance.now() };
+                run();
+            }
+
+            function startHold(dir) {
+                if (!glide && !rafId) pos = window.scrollY;
+                glide = null;
+                target = dir * MAX_SPEED;
+                run();
+            }
+
+            function cancelAll() { glide = null; target = 0; velocity = 0; }
+
+            // If the visitor scrolls with their own wheel/trackpad, get out of the way
+            window.addEventListener('wheel', cancelAll, { passive: true });
 
             document.querySelectorAll('.scroll-btn').forEach(function (btn) {
                 var dir = Number(btn.dataset.dir);
-                var holdTimer = null, holding = false, rafId = null, last = null;
-
-                function loop(t) {
-                    var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.05);
-                    last = t;
-                    nudge(dir * HOLD_SPEED * dt);
-                    rafId = requestAnimationFrame(loop);
-                }
-
-                function stop() {
-                    clearTimeout(holdTimer);
-                    cancelAnimationFrame(rafId);
-                    holdTimer = rafId = last = null;
-                }
+                var holdTimer = null, holding = false;
 
                 btn.addEventListener('pointerdown', function (e) {
                     e.preventDefault();
@@ -1319,22 +1363,30 @@
                     holding = false;
                     holdTimer = setTimeout(function () {
                         holding = true;
-                        rafId = requestAnimationFrame(loop);
+                        startHold(dir);
                     }, HOLD_DELAY);
                 });
 
-                btn.addEventListener('pointerup', function () {
-                    if (!holding) {
-                        tap(dir);
+                function release() {
+                    clearTimeout(holdTimer);
+                    if (holding) {
+                        target = 0;          // coast to a smooth stop
+                    } else {
+                        startGlide(dir);     // quick tap = eased glide
                     }
-                    stop();
-                });
+                    holding = false;
+                }
 
-                btn.addEventListener('pointercancel', stop);
-                btn.addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); }); // blocks any old scroll-to-top code
+                btn.addEventListener('pointerup', release);
+                btn.addEventListener('pointercancel', function () {
+                    clearTimeout(holdTimer);
+                    if (holding) target = 0;
+                    holding = false;
+                });
+                btn.addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); });
                 btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
                 btn.addEventListener('keydown', function (e) {
-                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tap(dir); }
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startGlide(dir); }
                 });
             });
         })();
